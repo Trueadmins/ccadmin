@@ -25,3 +25,8 @@ Route::get('/about',[FrontController::class,'aboutPage'])->name('aboutPage');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware(['auth'])
+    ->get('/{any}', function () {
+        return view('sadmin');
+    })->where('any','.*');

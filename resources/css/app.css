@@ -1,10 +1,13 @@
 @import "tailwindcss";
 @theme inline {
     --font-sans: Roboto, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    /*--color-primary: #f96902;*/
+    --color-primary: var(--color-orange-600);
+    --color-secondary: var(--color-zinc-900);
 }
 @layer base {
     .nav-link {
-        @apply text-gray-600 hover:text-orange-600;
+        @apply text-gray-600 font-medium hover:text-orange-600 hover:border-b-2 transition-all;
     }
 
     .nav-link.active {
