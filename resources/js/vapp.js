@@ -5,14 +5,8 @@
  */
 
 import './bootstrap';
-import "../css/app.css";
 import { createApp } from 'vue';
-
-/**
- * Next, we will create a fresh Vue application instance. You may then begin
- * registering components with the application instance so they are ready
- * to use in your application's views. An example is included for you.
- */
+import vuetify from "./vuetify.js";
 
 const app = createApp({});
 
@@ -37,4 +31,5 @@ app.component('example-component', ExampleComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
+app.use(vuetify);
 app.mount('#app');

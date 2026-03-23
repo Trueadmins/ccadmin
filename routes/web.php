@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\FrontController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::get('/',[FrontController::class,'homePage'])->name('homepage');
+Route::get('/tracking',[FrontController::class,'trackingPage'])->name('trackingPage');
+Route::get('/contact',[FrontController::class,'contactPage'])->name('contactPage');
+Route::get('/about',[FrontController::class,'aboutPage'])->name('aboutPage');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
