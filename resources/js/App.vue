@@ -1,22 +1,20 @@
 <template>
     <v-app>
         <v-navigation-drawer v-model="drawer"
-                             :rail="isDesktop"
-                             :rail-width="50"
-                             expand-on-hover
                              :temporary="!isDesktop"
                              :location="$vuetify.display.mobile ? 'left' : undefined">
-            <v-list>
-                <v-list-item baseColor="dark">
-                    <v-list-item-title>CourierCity</v-list-item-title>
+            <v-list nav activeColor="orange" density="compact" class="d-flex flex-column h-screen">
+                <v-list-item baseColor="dark" prependAvatar="/favicon.ico">
+                    <v-list-item-title>Courier City</v-list-item-title>
                 </v-list-item>
                 <v-divider></v-divider>
+                <v-list-item title="Dashboard" link :to="{name:'AdminDashboard'}"></v-list-item>
+                <v-list-item title="Users" link :to="{name:'AdminDashboard'}"></v-list-item>
+                <v-spacer/>
                 <v-divider class="my-1"></v-divider>
-                <v-list-item prepend-icon="mdi-logout">
-                    <v-list-item-title>
-                        <v-btn @click="logout" variant="outlined" size="small" block title="Logout">Logout</v-btn>
-                    </v-list-item-title>
-                </v-list-item>
+                <v-list-item-title>
+                    <v-btn @click="logout" variant="outlined" size="small" block title="Logout">Logout</v-btn>
+                </v-list-item-title>
             </v-list>
         </v-navigation-drawer>
         <v-main class="py-1 bg-grey-lighten-5">

@@ -37,7 +37,7 @@
 </head>
 <body class="text-slate-800 bg-yellow-50/10">
     <div id="app">
-        <nav class="flex bg-yellow-50/90 shadow-sm py-1.5 sticky top-0 z-20">
+        <nav class="flex bg-linear-to-r from-yellow-50 via-white to-orange-50 shadow-sm py-1.5 sticky top-0 z-20">
             <div class="container max-w-7xl flex items-center">
                 <a class="text-xl" href="{{ url('/') }}" title="Courier City">
                     <img src="{{asset('images/logobig.png')}}" width="332" height="37" alt="{{ config('app.name', 'Laravel') }}">

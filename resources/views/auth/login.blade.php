@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="min-h-[calc(100vh-41.5px)] flex items-center justify-center px-4 bg-slae-50">
+    <div class="min-h-[calc(100vh-41.5px)] flex items-center justify-center px-4 bg-linear-to-br from-orange-100 to-orange-200">
 
         <div class="w-full max-w-md">
             <!-- Card -->
-            <div class="bg-white shadow-lg rounded-xl overflow-hidden border border-gray-200">
+            <div class="bg-white shadow-lg rounded-xl overflow-hidden border border-orange-200">
 
                 <!-- Header -->
-                <div class="bg-slate-200 px-6 py-3 font-semibold text-lg">
+                <div class="bg-linear-to-br from-orange-400 via-primary to-orange-700 px-6 py-3 font-semibold text-lg">
                     {{ __('Login') }}
                 </div>
 
@@ -74,7 +74,7 @@
 
                         <!-- Submit -->
                         <button type="submit"
-                                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg font-semibold transition">
+                                class="w-full bg-slate-700 hover:bg-slate-800 text-white py-2 rounded-lg font-semibold transition">
                             {{ __('Login') }}
                         </button>
 
