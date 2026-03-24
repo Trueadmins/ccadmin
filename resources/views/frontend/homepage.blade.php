@@ -2,13 +2,13 @@
 
 @section('content')
     <section class="hero relative aspect-video lg:aspect-7/3 bg-secondary">
-        <Image src="{{asset('images/hero1.jpg')}}" alt="Courier City" sizes="100vw" fill class="opacity-50 object-cover object-top"/>
+        <img src="{{asset('images/hero1.jpg')}}" alt="Courier City" class="opacity-50 object-cover object-top"/>
         <div class="absolute top-0 w-full h-full">
-        <div class="container max-w-7xl h-full flex items-center justify-center">
-        <h1 class="text-white drop-shadow-lg drop-shadow-gray-800 text-[6vw]">
-        Worldwide <span class="text-primary">Courier</span> & Cargo
-        </h1>
-        </div>
+            <div class="container max-w-7xl h-full flex items-center justify-center">
+            <h1 class="text-white drop-shadow-lg drop-shadow-gray-800 text-[6vw]">
+            Worldwide <span class="text-primary">Courier</span> & Cargo
+            </h1>
+            </div>
         </div>
     </section>
     <section class=" border-y bg-secondary border-white/5 py-12 relative">
@@ -149,7 +149,7 @@
                 <div class="relative group">
                     <div class="absolute -inset-4 bg-primary/10 blur-3xl rounded-full transition-all group-hover:bg-primary/40"></div>
                     <div class="relative rounded-3xl overflow-hidden shadow-2xl">
-                        <Image alt="Tracking Interface" sizes="100vw" class="w-full"
+                        <img alt="Tracking Interface" sizes="100vw" class="w-71 lg:w-full"
                                width="284" height="400"
                                data-alt="Smartphone screen showing a live delivery tracking map interface"
                                src="{{asset('images/calculate-1.png')}}"/>

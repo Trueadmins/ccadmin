@@ -8,7 +8,11 @@ class FrontController extends Controller
 {
     public function homePage()
     {
-        return view('frontend.homepage');
+        return view('frontend.homepage', [
+            'pageTitle' => 'Fast Shipping Solutions from UK to Worldwide | Courier City',
+            'pageDescription' => 'Reliable international shipping with instant quotes and tracking. Courier City provides parcel services from the UK to Europe, Canada, USA, and India. Secure, fast, and professional delivery for businesses and individuals',
+            'ogImage' => asset('images/hero1.jpg'), // 1200x630px recommended
+        ]);
     }
 
     public function trackingPage()
