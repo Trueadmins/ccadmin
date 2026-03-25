@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,5 +25,22 @@ class HomeController extends Controller
     public function index()
     {
         return view('sadmin');
+    }
+
+    public function sadminDashboard(Request $request)
+    {
+        return response()->json([
+            'success' => true,
+            'users' => User::all()->count(),
+        ]);
+    }
+
+    public function allUsers()
+    {
+        $users = User::get();
+        return response()->json([
+            'success' => true,
+            'users' => $users,
+        ]);
     }
 }

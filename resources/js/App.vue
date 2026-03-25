@@ -3,13 +3,14 @@
         <v-navigation-drawer v-model="drawer"
                              :temporary="!isDesktop"
                              :location="$vuetify.display.mobile ? 'left' : undefined">
-            <v-list nav activeColor="orange" density="compact" class="d-flex flex-column h-screen">
-                <v-list-item baseColor="dark" prependAvatar="/favicon.ico">
-                    <v-list-item-title>Courier City</v-list-item-title>
+            <v-list nav activeClass="bg-orange-darken-2" density="compact" class="d-flex flex-column h-screen">
+                <v-list-item baseColor="dark" >
+                    <v-list-item-title><v-img src="/images/logobig.png"/></v-list-item-title>
                 </v-list-item>
                 <v-divider></v-divider>
-                <v-list-item title="Dashboard" link :to="{name:'AdminDashboard'}"></v-list-item>
-                <v-list-item title="Users" link :to="{name:'AdminDashboard'}"></v-list-item>
+                <v-list-item title="Dashboard" link :to="{name:'AdminDashboard'}" prepend-icon="mdi-view-dashboard-outline"></v-list-item>
+                <v-list-item title="Users" link :to="{name:'UsersList'}" prepend-icon="mdi-account-group"></v-list-item>
+                <v-list-item title="Shipments" link :to="{name:'ShipmentDashboard'}" prepend-icon="mdi-truck-fast"></v-list-item>
                 <v-spacer/>
                 <v-divider class="my-1"></v-divider>
                 <v-list-item-title>

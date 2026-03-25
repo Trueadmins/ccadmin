@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="hero relative aspect-video lg:aspect-7/3 bg-secondary">
-        <img src="{{asset('images/hero1.jpg')}}" alt="Courier City" class="opacity-50 object-cover object-top"/>
+    <section class="hero relative bg-secondary">
+        <img src="{{asset('images/hero1.jpg')}}" alt="Courier City" class="aspect-video lg:aspect-7/3 opacity-50 w-full object-cover object-top"/>
         <div class="absolute top-0 w-full h-full">
             <div class="container max-w-7xl h-full flex items-center justify-center">
             <h1 class="text-white drop-shadow-lg drop-shadow-gray-800 text-[6vw]">
