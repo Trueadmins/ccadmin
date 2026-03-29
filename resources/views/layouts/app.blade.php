@@ -33,7 +33,7 @@
     <link href="https://fonts.bunny.net/css?family=roboto:400,500,700,900" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="text-slate-800 bg-yellow-50/10">
     <div id="app">
