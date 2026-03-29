@@ -1,8 +1,10 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
+import postcss from "postcss";
 // import vuetify from "vite-plugin-vuetify";
-import tailwindcss from "@tailwindcss/vite";
+// import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from "@tailwindcss/postcss"
 
 export default defineConfig({
     plugins: [
