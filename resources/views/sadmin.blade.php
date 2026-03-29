@@ -15,7 +15,7 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=roboto:400,500,700,900" rel="stylesheet" />
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss'])
+    @vite(['resources/css/app.css'])
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css" />
 </head>
 <body>
