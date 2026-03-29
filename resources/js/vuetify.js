@@ -1,11 +1,12 @@
 import "../css/app.css";
 // import "../css/layers.css";
-import "vuetify/_styles.scss";
+
 // import "vuetify/styles";
 
 import {createVuetify} from 'vuetify';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
+import "vuetify/_styles.scss";
 
 
 const ccTheme = {
