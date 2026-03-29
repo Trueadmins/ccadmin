@@ -8,7 +8,7 @@ import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 
 
-const customeTheme = {
+const ccTheme = {
     dark: false,
     colors: {
         primary: "#673AB7",
@@ -40,9 +40,9 @@ const vuetify = createVuetify({
     components,
     directives,
     theme: {
-        defaultTheme: "customeTheme",
+        defaultTheme: "ccTheme",
         themes: {
-            customeTheme,
+            ccTheme,
         },
     },
 });

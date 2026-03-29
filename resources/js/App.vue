@@ -11,6 +11,7 @@
                 <v-list-item title="Dashboard" link :to="{name:'AdminDashboard'}" prepend-icon="mdi-view-dashboard-outline"></v-list-item>
                 <v-list-item title="Users" link :to="{name:'UsersList'}" prepend-icon="mdi-account-group"></v-list-item>
                 <v-list-item title="Shipments" link :to="{name:'ShipmentDashboard'}" prepend-icon="mdi-truck-fast"></v-list-item>
+                <v-list-item title="Shipment New" link :to="{name:'ShipmentNew'}" prepend-icon="mdi-truck-plus"></v-list-item>
                 <v-spacer/>
                 <v-divider class="my-1"></v-divider>
                 <v-list-item-title>

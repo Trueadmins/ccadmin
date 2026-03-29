@@ -26,7 +26,7 @@
         <v-row class="mt-6">
             <v-col cols="12" md="8">
                 <h3 class="mb-2">Recent Shipments</h3>
-                <v-card class="h-100">
+                <div class="border border-gray-100 rounded-md shadow">
                     <v-data-table striped="even" density="compact" :items="shipments" :headers="shipmentHeaders"
                                   hide-default-footer mobileBreakpoint="sm">
                         <template v-slot:item.status="{item}">
@@ -36,23 +36,21 @@
                             <v-chip v-else density="compact" size="small" variant="tonal" color="warning" class="font-weight-medium">{{item.status}}</v-chip>
                         </template>
                     </v-data-table>
-                </v-card>
+                </div>
             </v-col>
             <v-col cols="12" md="4">
                 <h3 class="mb-2">Live Tracker</h3>
-                <v-card variant="flat" class="elevation-0 h-100">
-                    <v-card-text>
-                        <h4>Current Shipment</h4>
-                        <div class="flex items-center gap-2">
-                            <v-icon color="green" size="x-small" class="animate-pulse">mdi-circle</v-icon>
-                            <span class="font-medium">#{{shipments[0].id}}</span>
-                            <span>*</span>
-                            <span class="text-xs">{{shipments[0].status}}</span>
-                        </div>
-                        <div>Passing through chicago terminal</div>
-                        <div>ETA: {{shipments[0].eta}}</div>
-                    </v-card-text>
-                </v-card>
+                <div class="shadow p-2 bg-white rounded-md">
+                    <h4>Current Shipment</h4>
+                    <div class="flex items-center gap-2">
+                        <v-icon color="green" size="x-small" class="animate-pulse">mdi-circle</v-icon>
+                        <span class="font-medium">#{{shipments[0].id}}</span>
+                        <span>*</span>
+                        <span class="text-xs">{{shipments[0].status}}</span>
+                    </div>
+                    <div>Passing through chicago terminal</div>
+                    <div>ETA: {{shipments[0].eta}}</div>
+                </div>
             </v-col>
         </v-row>
     </v-container>
