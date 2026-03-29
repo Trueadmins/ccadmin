@@ -9,21 +9,27 @@
                 <v-btn color="success" variant="elevated" size="small" prependIcon="mdi-plus">Create New Shipment</v-btn>
             </v-col>
         </v-row>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 group mt-6">
-            <v-card>
-                <v-card-item title="In Transit" appendIcon="mdi-truck-fast" class="text-blue-600 font-bold"></v-card-item>
-                <v-card-text><h2>12</h2></v-card-text>
-            </v-card>
-            <v-card>
-                <v-card-item title="Pending Approval" appendIcon="mdi-truck-alert" class="text-yellow-600 font-bold"></v-card-item>
-                <v-card-text><h2>5</h2></v-card-text>
-            </v-card>
-            <v-card>
-                <v-card-item title="Delivered" appendIcon="mdi-check-decagram" class="text-green-600 font-bold"></v-card-item>
-                <v-card-text><h2>148</h2></v-card-text>
-            </v-card>
-        </div>
-        <v-row class="mt-6">
+        <v-row>
+            <v-col cols="12" md="4">
+                <v-card>
+                    <v-card-item title="In Transit" appendIcon="mdi-truck-fast" class="text-blue-600 font-bold"></v-card-item>
+                    <v-card-text><h2>12</h2></v-card-text>
+                </v-card>
+            </v-col>
+            <v-col cols="12" md="4">
+                <v-card>
+                    <v-card-item title="Pending Approval" appendIcon="mdi-truck-alert" class="text-yellow-600 font-bold"></v-card-item>
+                    <v-card-text><h2>5</h2></v-card-text>
+                </v-card>
+            </v-col>
+            <v-col cols="12" md="4">
+                <v-card>
+                    <v-card-item title="Delivered" appendIcon="mdi-check-decagram" class="text-green-600 font-bold"></v-card-item>
+                    <v-card-text><h2>148</h2></v-card-text>
+                </v-card>
+            </v-col>
+        </v-row>
+        <v-row>
             <v-col cols="12" md="8">
                 <h3 class="mb-2">Recent Shipments</h3>
                 <div class="border border-gray-100 rounded-md shadow">
@@ -40,17 +46,21 @@
             </v-col>
             <v-col cols="12" md="4">
                 <h3 class="mb-2">Live Tracker</h3>
-                <div class="shadow p-2 bg-white rounded-md">
-                    <h4>Current Shipment</h4>
-                    <div class="flex items-center gap-2">
-                        <v-icon color="green" size="x-small" class="animate-pulse">mdi-circle</v-icon>
-                        <span class="font-medium">#{{shipments[0].id}}</span>
-                        <span>*</span>
-                        <span class="text-xs">{{shipments[0].status}}</span>
-                    </div>
-                    <div>Passing through chicago terminal</div>
-                    <div>ETA: {{shipments[0].eta}}</div>
-                </div>
+                <v-card class="rounded-md">
+                    <v-card-title>Current Shipment</v-card-title>
+                    <v-card-text>
+                        <div class="d-flex ga-1">
+                            <v-icon color="success" size="x-small" class="animate-pulse">mdi-circle</v-icon>
+                            <span class="font-medium">#{{shipments[0].id}}</span>
+                            <span>*</span>
+                            <span class="text-xs">{{shipments[0].status}}</span>
+                        </div>
+
+                        <div>Passing through chicago terminal</div>
+                        <div>ETA: {{shipments[0].eta}}</div>
+                    </v-card-text>
+
+                </v-card>
             </v-col>
         </v-row>
     </v-container>
