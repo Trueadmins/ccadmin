@@ -2,7 +2,7 @@
     <v-container fluid>
         <v-row align="end">
             <v-col cols="12" md="8">
-                <v-card class="rounded-lg h-100">
+                <v-card class="rounded-lg">
                     <v-card-item :title="'Welcome ' + $store.state.user.name"
                                  subtitle="subtitle" prependIcon="mdi-account" appendIcon="mdi-dots-vertical"></v-card-item>
                     <v-card-text>
@@ -11,7 +11,7 @@
                 </v-card>
             </v-col>
             <v-col cols="12" md="4">
-                <v-card class="rounded-lg h-100">
+                <v-card class="rounded-lg">
                     <v-card-item title="Users" :subtitle="'Total Users '+ users_count" appendIcon="mdi-account-group"></v-card-item>
                     <v-card-text>
                         <v-row class="justify-center text-center">

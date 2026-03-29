@@ -3,7 +3,7 @@
         <v-navigation-drawer v-model="drawer"
                              :temporary="!isDesktop"
                              :location="$vuetify.display.mobile ? 'left' : undefined">
-            <v-list nav activeClass="bg-orange-darken-2" density="compact" class="d-flex flex-column h-screen">
+            <v-list nav activeClass="bg-primary" density="compact" class="d-flex flex-column h-screen">
                 <v-list-item baseColor="dark" >
                     <v-list-item-title><v-img src="/images/logobig.png"/></v-list-item-title>
                 </v-list-item>

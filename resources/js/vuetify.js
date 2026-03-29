@@ -1,7 +1,7 @@
 import "../css/app.css";
 // import "../css/layers.css";
-// import "vuetify/_styles.scss";
-import "vuetify/styles";
+import "vuetify/_styles.scss";
+// import "vuetify/styles";
 
 import {createVuetify} from 'vuetify';
 import * as components from 'vuetify/components';
@@ -11,7 +11,7 @@ import * as directives from 'vuetify/directives';
 const ccTheme = {
     dark: false,
     colors: {
-        primary: "#673AB7",
+        primary: "#f54900",
         secondary: "#424242",
         accent: "#82B1FF",
         error: "#FF5252",
