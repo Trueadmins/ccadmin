@@ -21,7 +21,7 @@
         "postcss": "^8.5.8",
         "tailwindcss": "^4.2.2",
         "vue-router": "^5.0.4",
-        "vuetify": "^4.0.3",
+        "vuetify": "^3.12.4",
         "vuex": "^4.1.0"
     }
 }
