@@ -37,70 +37,115 @@
 </head>
 <body class="text-slate-800 bg-yellow-50/10">
     <div id="app">
-        <nav class="flex bg-linear-to-r from-yellow-50 via-white to-orange-50 shadow-sm py-1.5 sticky top-0 z-20">
-            <div class="container max-w-7xl flex items-center">
-                <a class="text-xl" href="{{ url('/') }}" title="Courier City">
-                    <img src="{{asset('images/logobig.png')}}" width="332" height="37" alt="{{ config('app.name', 'Laravel') }}">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse lg:visible flex w-full gap-3" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="flex justify-center gap-8 flex-1">
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('homepage') ? 'active' : '' }}" href="{{ route('homepage') }}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('trackingPage') ? 'active' : '' }}" href="{{ route('trackingPage') }}">Tracking</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('aboutPage') ? 'active' : '' }}" href="{{ route('aboutPage') }}">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('contactPage') ? 'active' : '' }}" href="{{ route('contactPage') }}">Contact</a>
-                        </li>
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="flex ms-auto gap-3">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+        <div class="bg-primary">
+            <div class="container max-w-7xl text-white mx-auto flex flex-col lg:flex-row gap-1 lg:gap-4 items-stretch lg:items-center justify-center lg:justify-between">
+                <div class="flex justify-between gap-1">
+                    <a href="{{route('homepage')}}" class="{{ request()->routeIs('homepage') ? 'text-secondary' : 'text-white hover:text-secondary' }} font-bold tracking-widest uppercase text-xs inline-flex  py-1 px-2">Home</a>
+                    <a href="{{route('trackingPage')}}" class="{{ request()->routeIs('trackingPage') ? 'text-secondary' : 'text-white hover:text-secondary' }} font-bold tracking-widest uppercase text-xs inline-flex  py-1 px-2">Tracking</a>
+                    <a href="{{route('aboutPage')}}" class="{{ request()->routeIs('aboutPage') ? 'text-secondary' : 'text-white hover:text-secondary' }} font-bold tracking-widest uppercase text-xs inline-flex  py-1 px-2 text-secondary">About</a>
+                    <a href="{{route('contactPage')}}" class="{{ request()->routeIs('contactPage') ? 'text-secondary' : 'text-white hover:text-secondary' }} font-bold tracking-widest uppercase text-xs inline-flex  py-1 px-2 text-secondary">Contact</a>
+                </div>
+                <div class="font-medium flex items-center gap-2 justify-center py-1">
+                    <i class="iconify" data-icon="mdi-phone"></i>
+                    <span class="text-sm text-secondary font-bold">0208 573 0111 / 0755 311 3111</span>
                 </div>
             </div>
-        </nav>
+        </div>
+        <header class="flex bg-linear-to-r from-yellow-50 via-white to-orange-50 shadow-sm py-1.5 sticky top-0 z-20">
+            <div class="container max-w-7xl py-1">
+                <nav class="flex flex-col lg:flex-row gap-3 items-center justify-between">
+                    <a class="text-xl" href="{{ route('homepage') }}" title="Courier City">
+                        <img src="{{asset('images/logobig.png')}}" width="332" height="37" alt="Courier City">
+                    </a>
+                    <a class="nav-link {{ request()->routeIs('homepage') ? 'active' : '' }} hidden lg:inline-flex font-medium text-base transition" href="{{ route('homepage') }}">Home</a>
+                    <a class="nav-link {{ request()->routeIs('trackingPage') ? 'active' : '' }} hidden lg:inline-flex font-medium text-base transition" href="{{ route('trackingPage') }}">Tracking</a>
+                    <a class="nav-link {{ request()->routeIs('aboutPage') ? 'active' : '' }} hidden lg:inline-flex font-medium text-base transition" href="{{ route('aboutPage') }}">About</a>
+                    <a class="nav-link {{ request()->routeIs('contactPage') ? 'active' : '' }} hidden lg:inline-flex font-medium text-base transition" href="{{ route('contactPage') }}">Contact</a>
+                    @guest
+                        @if (Route::has('login'))
+                            <a class="text-sm nav-link bg-primary text-white font-bold capitalize px-4 py-1.5 rounded-full shadow hover:bg-secondary" href="{{ route('login') }}">Get Started</a>
+                        @endif
+
+                        {{--                            @if (Route::has('register'))--}}
+                        {{--                                <li class="nav-item">--}}
+                        {{--                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>--}}
+                        {{--                                </li>--}}
+                        {{--                            @endif--}}
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
+                </nav>
+{{--                <div class="collapse lg:visible flex w-full gap-3">--}}
+                    <!-- Left Side Of Navbar -->
+{{--                    <ul class="flex justify-center gap-8 flex-1">--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link {{ request()->routeIs('homepage') ? 'active' : '' }}" href="{{ route('homepage') }}">Home</a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link {{ request()->routeIs('trackingPage') ? 'active' : '' }}" href="{{ route('trackingPage') }}">Tracking</a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link {{ request()->routeIs('aboutPage') ? 'active' : '' }}" href="{{ route('aboutPage') }}">About</a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link {{ request()->routeIs('contactPage') ? 'active' : '' }}" href="{{ route('contactPage') }}">Contact</a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+
+                    <!-- Right Side Of Navbar -->
+{{--                    <ul class="flex ms-auto gap-3">--}}
+{{--                        <!-- Authentication Links -->--}}
+{{--                        @guest--}}
+{{--                            @if (Route::has('login'))--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link bg-primary text-white font-bold capitalize px-4 py-1.5 rounded-full shadow hover:bg-secondary" href="{{ route('login') }}">Get Started</a>--}}
+{{--                                </li>--}}
+{{--                            @endif--}}
+
+{{--                            @if (Route::has('register'))--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>--}}
+{{--                                </li>--}}
+{{--                            @endif--}}
+{{--                        @else--}}
+{{--                            <li class="nav-item dropdown">--}}
+{{--                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>--}}
+{{--                                    {{ Auth::user()->name }}--}}
+{{--                                </a>--}}
+
+{{--                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">--}}
+{{--                                    <a class="dropdown-item" href="{{ route('logout') }}"--}}
+{{--                                       onclick="event.preventDefault();--}}
+{{--                                                 document.getElementById('logout-form').submit();">--}}
+{{--                                        {{ __('Logout') }}--}}
+{{--                                    </a>--}}
+
+{{--                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">--}}
+{{--                                        @csrf--}}
+{{--                                    </form>--}}
+{{--                                </div>--}}
+{{--                            </li>--}}
+{{--                        @endguest--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+            </div>
+        </header>
         <main>
             @yield('content')
         </main>
