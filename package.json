@@ -18,6 +18,7 @@
     "dependencies": {
         "@tailwindcss/postcss": "^4.2.2",
         "@tailwindcss/vite": "^4.2.2",
+        "country-state-city": "^3.2.1",
         "dayjs": "^1.11.20",
         "postcss": "^8.5.8",
         "tailwindcss": "^4.2.2",
