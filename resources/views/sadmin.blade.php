@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'TruewebCart') }}</title>
+    <title>{{ $pageTitle ?? "Global Parcel Delivery Services from UK to Worldwide - Courier City Ltd." }}</title>
     <script>
         window.APP_USER = @json(auth()->user());
     </script>

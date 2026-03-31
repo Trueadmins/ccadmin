@@ -91,5 +91,5 @@ export default {
 </script>
 
 <style>
-thead tr {background-color: var(--color-gray-200)}
+thead tr {background-color: rgb(var(--v-theme-surface-light))}
 </style>

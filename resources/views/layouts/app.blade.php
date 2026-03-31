@@ -17,7 +17,7 @@
     <meta property="og:image" content="{{ $ogImage ?? asset('images/default-og.jpg') }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Courier City">
+    <meta property="og:site_name" content="Courier City Ltd.">
     <meta property="og:image:secure_url" content="{{ $ogImage ?? asset('images/default-og.jpg') }}">
 
     {{-- Twitter Card --}}
