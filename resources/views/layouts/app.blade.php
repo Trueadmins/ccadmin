@@ -39,11 +39,11 @@
     <div id="app">
         <div class="bg-primary">
             <div class="container max-w-7xl text-white mx-auto flex flex-col lg:flex-row gap-1 lg:gap-4 items-stretch lg:items-center justify-center lg:justify-between">
-                <div class="flex justify-between gap-1">
-                    <a href="{{route('homepage')}}" class="{{ request()->routeIs('homepage') ? 'text-secondary' : 'text-white hover:text-secondary' }} font-bold tracking-widest uppercase text-xs inline-flex  py-1 px-2">Home</a>
-                    <a href="{{route('trackingPage')}}" class="{{ request()->routeIs('trackingPage') ? 'text-secondary' : 'text-white hover:text-secondary' }} font-bold tracking-widest uppercase text-xs inline-flex  py-1 px-2">Tracking</a>
-                    <a href="{{route('aboutPage')}}" class="{{ request()->routeIs('aboutPage') ? 'text-secondary' : 'text-white hover:text-secondary' }} font-bold tracking-widest uppercase text-xs inline-flex  py-1 px-2 text-secondary">About</a>
-                    <a href="{{route('contactPage')}}" class="{{ request()->routeIs('contactPage') ? 'text-secondary' : 'text-white hover:text-secondary' }} font-bold tracking-widest uppercase text-xs inline-flex  py-1 px-2 text-secondary">Contact</a>
+                <div class="flex justify-between gap-1 py-1">
+                    <a href="{{route('homepage')}}" class="{{ request()->routeIs('homepage') ? 'text-white bg-secondary hover:bg-primary' : 'text-white hover:text-white hover:bg-secondary' }} text-shadow-xs text-shadow-gray-500 rounded-xl font-bold tracking-widest uppercase text-xs inline-flex  py-1 px-4">Home</a>
+                    <a href="{{route('trackingPage')}}" class="{{ request()->routeIs('trackingPage') ? 'text-white bg-secondary hover:bg-primary' : 'text-white hover:bg-secondary' }} text-shadow-xs text-shadow-gray-500 rounded-xl font-bold tracking-widest uppercase text-xs inline-flex  py-1 px-2">Tracking</a>
+                    <a href="{{route('aboutPage')}}" class="{{ request()->routeIs('aboutPage') ? 'text-white bg-secondary hover:bg-primary' : 'text-white hover:bg-secondary' }} text-shadow-xs text-shadow-gray-500 rounded-xl font-bold tracking-widest uppercase text-xs inline-flex  py-1 px-3 text-secondary">About</a>
+                    <a href="{{route('contactPage')}}" class="{{ request()->routeIs('contactPage') ? 'text-white bg-secondary hover:bg-primary' : 'text-white hover:bg-secondary' }} text-shadow-xs text-shadow-gray-500 rounded-xl font-bold tracking-widest uppercase text-xs inline-flex  py-1 px-2 text-secondary">Contact</a>
                 </div>
                 <div class="font-medium flex items-center gap-2 justify-center py-1">
                     <i class="iconify" data-icon="mdi-phone"></i>
@@ -51,19 +51,21 @@
                 </div>
             </div>
         </div>
-        <header class="flex bg-linear-to-r from-yellow-50 via-white to-orange-50 shadow-sm py-1.5 sticky top-0 z-20">
+        <header class="flex bg-linear-to-r from-yellow-100 via-white to-orange-100 shadow-sm py-1.5 sticky top-0 z-20">
             <div class="container max-w-7xl py-1">
                 <nav class="flex flex-col lg:flex-row gap-3 items-center justify-between">
                     <a class="text-xl" href="{{ route('homepage') }}" title="Courier City">
-                        <img src="{{asset('images/logobig.png')}}" width="332" height="37" alt="Courier City">
+                        <img src="{{asset('images/logobig.png')}}" class="w-75 lg:w-83 drop-shadow-xs drop-shadow-gray-400" width="332" height="37" alt="Courier City">
                     </a>
-                    <a class="nav-link {{ request()->routeIs('homepage') ? 'active' : '' }} hidden lg:inline-flex font-medium text-base transition" href="{{ route('homepage') }}">Home</a>
-                    <a class="nav-link {{ request()->routeIs('trackingPage') ? 'active' : '' }} hidden lg:inline-flex font-medium text-base transition" href="{{ route('trackingPage') }}">Tracking</a>
-                    <a class="nav-link {{ request()->routeIs('aboutPage') ? 'active' : '' }} hidden lg:inline-flex font-medium text-base transition" href="{{ route('aboutPage') }}">About</a>
-                    <a class="nav-link {{ request()->routeIs('contactPage') ? 'active' : '' }} hidden lg:inline-flex font-medium text-base transition" href="{{ route('contactPage') }}">Contact</a>
+                    <a class="nav-link {{ request()->routeIs('homepage') ? 'active' : '' }} hidden lg:inline-flex font-bold text-sm transition" href="{{ route('homepage') }}">Home</a>
+                    <a class="nav-link {{ request()->routeIs('trackingPage') ? 'active' : '' }} hidden lg:inline-flex font-bold text-sm transition" href="{{ route('trackingPage') }}">Tracking</a>
+                    <a class="nav-link {{ request()->routeIs('aboutPage') ? 'active' : '' }} hidden lg:inline-flex font-bold text-sm transition" href="{{ route('aboutPage') }}">About</a>
+                    <a class="nav-link {{ request()->routeIs('contactPage') ? 'active' : '' }} hidden lg:inline-flex font-bold text-sm transition" href="{{ route('contactPage') }}">Contact</a>
                     @guest
                         @if (Route::has('login'))
-                            <a class="text-sm nav-link bg-primary text-white font-bold capitalize px-4 py-1.5 rounded-full shadow hover:bg-secondary" href="{{ route('login') }}">Get Started</a>
+                            <a class="text-sm bg-primary inline-flex items-center gap-1 text-white font-bold capitalize px-4 py-1.5 rounded-full shadow hover:bg-secondary justify-center" href="{{ route('login') }}">
+                                Get Started <i class="iconify" data-icon="mdi-account"></i>
+                            </a>
                         @endif
 
                         {{--                            @if (Route::has('register'))--}}
@@ -152,7 +154,7 @@
         <footer class="bg-secondary border-t-4 border-primary pt-10 pb-2 relative">
             <img src="{{asset('images/footer-bg.jpg')}}" alt="footer" class="absolute top-0 w-full h-full" />
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-5 mb-9">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-9">
                     <div class="col-span-1 md:col-span-1 space-y-6">
                         <div class="flex items-center gap-2">
                             <img alt="Courier City" class="h-8 w-auto" data-alt="Small Courier City brand logo"
@@ -199,7 +201,7 @@
                     </div>
                     <div>
                         <h5 class="font-bold text-primary uppercase tracking-wider text-base">Southall</h5>
-                        <h5 class="font-bold text-gray-200 mb-6 uppercase tracking-wider text-xs">Near PUNB</h5>
+                        <h5 class="font-bold text-gray-200 mb-6 uppercase tracking-wider text-xs">Near Railway Station</h5>
                         <ul class="space-y-4 text-sm text-slate-300">
                             <li class="flex flex-col gap-1">
                             <div class="flex items-center gap-1">
@@ -216,31 +218,7 @@
                             </div>
                             <div class="flex items-center gap-1">
                                 <i data-icon="mdi-email" class="iconify text-primary"></i>
-                                    <span class="text-sm">couriercitysouthall@gmail.com</span>
-                            </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h5 class="font-bold text-primary uppercase tracking-wider text-base">Hayes</h5>
-                        <h5 class="font-bold text-gray-200 mb-6 uppercase tracking-wider text-xs">Near Hayes & Harlington Train Station</h5>
-                        <ul class="space-y-4 text-sm text-slate-300">
-                            <li class="flex flex-col gap-1">
-                            <div class="flex items-center gap-1">
-                                <i data-icon="mdi-map-marker" class="iconify text-primary"></i>
-                                    <span class="text-sm">10 Clayton Road, UB3 1 AZ</span>
-                            </div>
-                            <div class="flex items-center gap-1">
-                                <i data-icon="mdi-phone" class="iconify text-primary"></i>
-                                    <span class="text-sm">0208 573 0111</span>
-                            </div>
-                            <div class="flex items-center gap-1">
-                                <i data-icon="mdi-whatsapp" class="iconify text-primary"></i>
-                                    <span class="text-sm">0755 311 3111</span>
-                            </div>
-                            <div class="flex items-center gap-1">
-                                <i data-icon="mdi-email" class="iconify text-primary"></i>
-                                    <span class="text-sm">couriercityhayes@gmail.com</span>
+                                    <span class="text-sm">couriercityukl@gmail.com</span>
                             </div>
                             </li>
                         </ul>

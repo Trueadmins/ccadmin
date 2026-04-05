@@ -11,11 +11,11 @@ body,html {
 }
 @layer base {
     .nav-link {
-        @apply text-gray-600 font-medium hover:text-orange-600 hover:border-b-2 transition-all;
+        @apply text-white text-shadow-xs text-shadow-gray-500 shadow-lg py-1.5 px-4 rounded-ss-full rounded-ee-full font-medium hover:bg-secondary min-w-30 bg-primary justify-center transition-all;
     }
 
     .nav-link.active {
-        @apply text-orange-600 font-semibold border-b-2 border-orange-600;
+        @apply bg-secondary hover:bg-primary;
     }
 
     .container {

@@ -1,43 +1,59 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="hero relative bg-secondary">
-        <img src="{{asset('images/hero1.jpg')}}" alt="Courier City" class="aspect-video lg:aspect-7/3 opacity-50 w-full object-cover object-top"/>
-        <div class="absolute top-0 w-full h-full">
-            <div class="container max-w-7xl h-full flex items-center justify-center">
+    <section class="relative aspect-7/3 bg-orange-900">
+{{--        <video autoplay loop muted playsinline class="absolute w-full z-2 h-full object-cover object-bottom inset-0 opacity-50" poster="{{asset('images/dhl.jpg')}}">--}}
+{{--            <source src="{{asset('images/dhl.mp4')}}"/>--}}
+{{--        </video>--}}
+        <video autoplay loop muted playsinline class="absolute w-full h-full object-cover object-bottom inset-0 opacity-50" poster="{{asset('images/fedex.jpg')}}">
+            <source src="{{asset('images/fedex.mp4')}}"/>
+        </video>
+{{--        <video autoplay loop muted playsinline class="absolute w-1/2 h-full z-1 object-cover object-center inset-0 opacity-90" poster="{{asset('images/fedex.jpg')}}">--}}
+{{--            <source src="{{asset('images/video3.mp4')}}"/>--}}
+{{--        </video>--}}
+        <div class="container max-w-7xl h-full flex items-center justify-end text-center">
             <h1 class="text-white drop-shadow-lg drop-shadow-gray-800 text-[6vw]">
-            Worldwide <span class="text-primary">Courier</span> & Cargo
+                Worldwide <br/> <span class="text-primary">Courier</span> <br/> & Cargo
             </h1>
-            </div>
         </div>
     </section>
-    <section class=" border-y bg-secondary border-white/5 py-12 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center space-y-1 border-r border-slate-200 last:border-0">
-                    <p class="text-2xl lg:text-4xl font-black text-primary">1,000+</p>
-                    <p class="text-sm text-gray-200 font-semibold uppercase tracking-wider">Packages
-                        Daily</p>
-                </div>
-                <div class="text-center space-y-1 md:border-r border-slate-200 last:border-0">
-                    <p class="text-2xl lg:text-4xl font-black text-primary">99.9%</p>
-                    <p class="text-sm text-gray-200 font-semibold  uppercase tracking-wider">Success
-                        Rate</p>
-                </div>
-                <div class="text-center space-y-1 border-r border-slate-200  last:border-0">
-                    <p class="text-2xl lg:text-4xl font-black text-primary">25 Min</p>
-                    <p class="text-sm text-gray-200 font-semibold  uppercase tracking-wider">Avg.
-                        Pickup Time</p>
-                </div>
-                <div
-                    class="text-center space-y-1 border-r border-slate-100  last:border-0">
-                    <p class="text-2xl lg:text-4xl font-black text-primary">24/7</p>
-                    <p class="text-sm text-gray-200 font-semibold  uppercase tracking-wider">Support
-                        Ready</p>
-                </div>
-            </div>
-        </div>
-    </section>
+{{--    <section class="hero relative bg-secondary">--}}
+{{--        <img src="{{asset('images/hero1.jpg')}}" alt="Courier City" class="aspect-video lg:aspect-7/3 opacity-50 w-full object-cover object-top"/>--}}
+{{--        <div class="absolute top-0 w-full h-full">--}}
+{{--            <div class="container max-w-7xl h-full flex items-center justify-center">--}}
+{{--            <h1 class="text-white drop-shadow-lg drop-shadow-gray-800 text-[6vw]">--}}
+{{--            Worldwide <span class="text-primary">Courier</span> & Cargo--}}
+{{--            </h1>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+{{--    <section class=" border-y bg-secondary border-white/5 py-12 relative">--}}
+{{--        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">--}}
+{{--            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">--}}
+{{--                <div class="text-center space-y-1 border-r border-slate-200 last:border-0">--}}
+{{--                    <p class="text-2xl lg:text-4xl font-black text-primary">1,000+</p>--}}
+{{--                    <p class="text-sm text-gray-200 font-semibold uppercase tracking-wider">Packages--}}
+{{--                        Daily</p>--}}
+{{--                </div>--}}
+{{--                <div class="text-center space-y-1 md:border-r border-slate-200 last:border-0">--}}
+{{--                    <p class="text-2xl lg:text-4xl font-black text-primary">99.9%</p>--}}
+{{--                    <p class="text-sm text-gray-200 font-semibold  uppercase tracking-wider">Success--}}
+{{--                        Rate</p>--}}
+{{--                </div>--}}
+{{--                <div class="text-center space-y-1 border-r border-slate-200  last:border-0">--}}
+{{--                    <p class="text-2xl lg:text-4xl font-black text-primary">25 Min</p>--}}
+{{--                    <p class="text-sm text-gray-200 font-semibold  uppercase tracking-wider">Avg.--}}
+{{--                        Pickup Time</p>--}}
+{{--                </div>--}}
+{{--                <div--}}
+{{--                    class="text-center space-y-1 border-r border-slate-100  last:border-0">--}}
+{{--                    <p class="text-2xl lg:text-4xl font-black text-primary">24/7</p>--}}
+{{--                    <p class="text-sm text-gray-200 font-semibold  uppercase tracking-wider">Support--}}
+{{--                        Ready</p>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
     <section class="py-24 px-4 bg-gray-50">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col items-center text-center mb-16 space-y-4">
