@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 <div class="col-span-12 dimage lg:col-span-5">
-                    <img src="{{asset('images/serv1.png')}}" alt="Courier Services">
+                    <img src="{{asset('images/serv2.png')}}" alt="Courier Services">
                 </div>
             </div>
         </div>
@@ -204,7 +204,7 @@
                         <img alt="Tracking Interface" sizes="100vw" class="w-71 lg:w-full"
                                width="284" height="400"
                                data-alt="Smartphone screen showing a live delivery tracking map interface"
-                               src="{{asset('images/calculate-1.png')}}"/>
+                               src="{{asset('images/guy1.png')}}"/>
                     </div>
                 </div>
             </div>
