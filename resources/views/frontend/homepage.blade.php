@@ -54,6 +54,42 @@
 {{--            </div>--}}
 {{--        </div>--}}
 {{--    </section>--}}
+    <section class="py-10 bg-linear-to-tr from-orange-200 via-white/50 to-primary/50">
+        <div class="container max-w-7xl">
+            <div class="grid grid-cols-12 items-center gap-3">
+                <div class="col-span-12 lg:col-span-7 detail flex flex-col gap-4">
+                    <h2 class="text-slate-700 text-2xl lg:text-4xl font-light underline underline-offset-4">Courier Services</h2>
+                    <div class="bg-primary px-2 tracking-wider">
+                        <h3 class="text-xl lg:text-2xl font-light text-white text-shadow-xs text-shadow-gray-400">Express Delivery Services and International Shipping</h3>
+                        <div class="text-sm text-secondary">Fast. Door-to-Door. Courier Delivered.</div>
+                    </div>
+                    <p class="text-sm tracking-wide">When you ship with Our Courier Services – you’re shipping with specialists in international shipping and delivery services! With our wide range of express parcel and package services, along with shipping and tracking solutions to fit your needs – DHL, UPS, FedEx and other reputated companies can deliver! </p>
+                    <p class="text-sm tracking-wide">Our Courier partners connects people in over 220 countries and territories worldwide. Driven by the power of more than 380,000 employees, we deliver integrated services and tailored solutions for managing and transporting letters, goods and information. </p>
+
+                    <div class="bg-primary leading-relaxed rounded-ss-xl rounded-ee-xl text-center px-4 text-white text-xl text-shadow-xs text-shadow-gray-400 tracking-wider">
+                        Guaranteed Delivery to India with in 5-15 working days
+                    </div>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
+                        <div class="text-center shadow-xl overflow-hidden rounded-xl">
+                            <img class="aspect-video object-cover rounded-t-xl" src="{{asset('images/air-f.jpg')}}" alt="Air Freight">
+                            <div class="bg-primary rounded-b-xl text-white text-shadow-xs text-shadow-gray-400 tracking-wide">Air Freight</div>
+                        </div>
+                        <div class="text-center shadow-xl overflow-hidden rounded-xl">
+                            <img class="aspect-video object-cover rounded-t-xl" src="{{asset('images/sea-f.jpg')}}" alt="Sea Freight">
+                            <div class="bg-primary rounded-b-xl text-white text-shadow-xs text-shadow-gray-400 tracking-wide">Sea Freight</div>
+                        </div>
+                        <div class="text-center shadow-xl overflow-hidden rounded-xl">
+                            <img class="aspect-video object-cover rounded-t-xl" src="{{asset('images/road-f.jpg')}}" alt="Road Freight">
+                            <div class="bg-primary rounded-b-xl text-white text-shadow-xs text-shadow-gray-400 tracking-wide">Road Freight</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-12 dimage lg:col-span-5">
+                    <img src="{{asset('images/serv1.png')}}" alt="Courier Services">
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="py-24 px-4 bg-gray-50">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col items-center text-center mb-16 space-y-4">
