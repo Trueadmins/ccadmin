@@ -4,6 +4,15 @@ import axios from "axios";
 const store = createStore({
     state:{
         user: window.APP_USER || JSON.parse(localStorage.getItem('user') || 'null'),
+        company:{
+            name:'Courier City Ltd.',
+            address_line1:"32 High Street",
+            address_line2:"Southall",
+            address_line3:"Ealing",
+            town:"Southall",
+            postcode:"UB1 3DA",
+            country:"United Kingdom",
+        }
     },
     mutations:{
         SET_USER(state, user){

@@ -1,9 +1,8 @@
 <template>
     <v-app>
-        <v-navigation-drawer v-model="drawer"
-                             permanent
-
-                             :location="$vuetify.display.mobile ? 'left' : undefined">
+        <v-navigation-drawer v-model="drawer" mobileBreakpoint="md"
+                             :temporary="!isDesktop"
+                             location="left">
             <v-list nav activeClass="bg-primary" density="compact" class="d-flex flex-column h-screen">
                 <v-list-item baseColor="dark" >
                     <v-list-item-title><v-img src="/images/logobig.png"/></v-list-item-title>
@@ -21,6 +20,7 @@
             </v-list>
         </v-navigation-drawer>
         <v-main class="py-1 bg-grey-lighten-5">
+            <v-icon class="hidden-md-and-up" @click="drawer = !drawer">{{drawer ? 'mdi-menu-open' : 'mdi-menu-open'}}</v-icon>
             <router-view/>
         </v-main>
     </v-app>

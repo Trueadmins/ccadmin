@@ -3,11 +3,10 @@
         <div class="mb-3">
             <h2 class="font-bold">Create New Shipment</h2>
         </div>
-        <!-- Multistep Layout -->
         <v-row dense>
-            <v-col cols="12" md="12">
+            <v-col cols="12" md="12" class="py-0">
                 <v-autocomplete v-model="selectedCountry" :items="countries" item-title="name"
-                                prependInnerIcon="mdi-map-marker" variant="outlined"
+                                prependInnerIcon="mdi-map-marker" variant="outlined" hide-details
                                 density="compact" label="Destination Country" clearable/>
             </v-col>
             <v-col cols="12" md="6">
@@ -16,47 +15,46 @@
                        Pick up Address
                     </v-card-title>
                     <v-card-text>
-                        <div class="space-y-4">
-                            <v-row dense>
-                                <v-col cols="12" md="12" class="block mt-2">
-                                    <v-text-field prependInnerIcon="mdi-briefcase-account-outline" variant="outlined" density="compact" label="Consignor"/>
-                                </v-col>
-                                <v-col cols="12" md="12" class="block">
-                                    <v-text-field variant="outlined" density="compact" label="Address line 1"/>
-                                </v-col>
-                                <v-col cols="12" md="12" class="block">
-                                    <v-text-field variant="outlined" density="compact" label="Address line 2"/>
-                                </v-col>
-                                <v-col cols="12" md="12" class="block">
-                                    <v-text-field variant="outlined" density="compact" label="Address line 3"/>
-                                </v-col>
-                                <v-col cols="12" md="12" class="block">
-                                    <v-text-field variant="outlined" density="compact" label="Town"/>
-                                </v-col>
-                                <v-col cols="12" md="12" class="block">
-                                    <v-autocomplete v-model="selectedCountry" :items="countries" item-title="name"
-                                                    prependInnerIcon="mdi-map-marker" variant="outlined"
-                                                    density="compact" label="Country" returnObject clearable/>
-                                </v-col>
-<!--                                <v-col cols="12" md="6" class="block">-->
-<!--                                    <v-autocomplete v-model="selectedState" :items="states" prependInnerIcon="mdi-city" item-title="name"-->
-<!--                                                    variant="outlined"-->
-<!--                                                    density="compact" label="State" returnObject/>-->
-<!--                                </v-col>-->
-<!--                                <v-col cols="12" md="6" class="block">-->
-<!--                                    <v-autocomplete :items="regions" item-title="name"-->
-<!--                                                    prependInnerIcon="mdi-office-building" variant="outlined"-->
-<!--                                                    density="compact" label="Region" returnObject/>-->
-<!--                                </v-col>-->
-                                <v-col cols="12" md="12" class="block">
-                                    <v-text-field prependInnerIcon="mdi-map-marker-outline" variant="outlined" density="compact" label="Post Code"/>
-                                </v-col>
-
-                                <v-col cols="12" md="12" class="block mt-2">
-                                    <v-text-field prependInnerIcon="mdi-account" variant="outlined" density="compact" label="Contact Name"/>
-                                </v-col>
-                            </v-row>
+                        <v-text-field v-model="company.name" prependInnerIcon="mdi-briefcase-account-outline" variant="outlined"
+                                      density="compact" label="Consignor" persistentPlaceholder readonly/>
+                        <v-text-field v-model="company.address_line1" variant="outlined" density="compact"
+                                      label="Address line 1" persistentPlaceholder readonly/>
+                        <v-text-field v-model="company.address_line2" variant="outlined" density="compact"
+                                      label="Address line 2" persistentPlaceholder readonly/>
+                        <div class="d-flex ga-1">
+                            <v-text-field v-model="company.address_line3" variant="outlined"
+                                          density="compact" label="Address line 3" persistentPlaceholder readonly/>
+                            <v-text-field v-model="company.town" variant="outlined" density="compact"
+                                          label="Town" persistentPlaceholder readonly/>
                         </div>
+                        <div class="d-flex ga-1">
+                            <v-text-field v-model="company.country" class="w-50" variant="outlined"
+                                          density="compact" label="Country" value="United Kingdom"
+                                          persistentPlaceholder readonly/>
+                            <v-text-field v-model="company.postcode" class="w-50"
+                                          prependInnerIcon="mdi-map-marker-outline" variant="outlined"
+                                          density="compact" label="Post Code" persistentPlaceholder readonly/>
+                        </div>
+                    </v-card-text>
+                </v-card>
+                <v-card class="mt-3">
+                    <v-card-title>Sender Detail</v-card-title>
+                    <v-card-text class="pt-2">
+                        <v-row>
+                            <v-col cols="12" md="12" class="py-0">
+                                <v-text-field prependInnerIcon="mdi-account" variant="outlined" density="compact" label="Name" persistentPlaceholder/>
+                            </v-col>
+                            <v-col cols="12" md="6" class="py-0">
+                                <v-text-field prependInnerIcon="mdi-email" variant="outlined" density="compact" label="Email" persistentPlaceholder/>
+                            </v-col>
+                            <v-col cols="12" md="6" class="py-0">
+                                <v-text-field prependInnerIcon="mdi-domain" variant="outlined" density="compact" label="Postcode" persistentPlaceholder/>
+                            </v-col>
+                            <v-col cols="12" md="12" class="py-0">
+                                <v-text-field prependInnerIcon="mdi-map-marker" variant="outlined" density="compact" label="Address" persistentPlaceholder/>
+                            </v-col>
+
+                        </v-row>
                     </v-card-text>
                 </v-card>
             </v-col>
@@ -65,149 +63,138 @@
                     <v-card-title>
                        Delivery Address
                     </v-card-title>
-                    <v-card-text>
-                        <div class="space-y-4">
-                            <v-row dense>
-                                <v-col cols="12" md="12" class="block mt-2">
-                                    <v-text-field prependInnerIcon="mdi-briefcase-account-outline" variant="outlined" density="compact" label="Consignee"/>
+                    <v-card-text class="pt-2">
+                        <v-row dense>
+                                <v-col cols="12" md="12" class="py-0">
+                                    <v-text-field prependInnerIcon="mdi-briefcase-account-outline" variant="outlined" density="compact" label="Consignee" persistentPlaceholder/>
                                 </v-col>
-                                <v-col cols="12" md="12" class="block">
-                                    <v-text-field variant="outlined" density="compact" label="Address line 1"/>
+                                <v-col cols="12" md="12" class="py-0">
+                                    <v-text-field variant="outlined" density="compact" label="Address line 1" persistentPlaceholder/>
                                 </v-col>
-                                <v-col cols="12" md="12" class="block">
-                                    <v-text-field variant="outlined" density="compact" label="Address line 2"/>
+                                <v-col cols="12" md="12" class="py-0">
+                                    <v-text-field variant="outlined" density="compact" label="Address line 2" persistentPlaceholder/>
                                 </v-col>
-                                <v-col cols="12" md="12" class="block">
-                                    <v-text-field variant="outlined" density="compact" label="Address line 3"/>
+                                <v-col cols="12" md="12" class="py-0">
+                                    <v-text-field variant="outlined" density="compact" label="Address line 3" persistentPlaceholder/>
                                 </v-col>
-                                <v-col cols="12" md="12" class="block">
-                                    <v-text-field variant="outlined" density="compact" label="Town"/>
-<!--                                    <v-autocomplete v-model="selectedState" :items="states" prependInnerIcon="mdi-city" item-title="name"-->
-<!--                                                    variant="outlined"-->
-<!--                                                    density="compact" label="Town" returnObject/>-->
+                                <v-col cols="12" md="12" class="py-0">
+                                    <v-text-field variant="outlined" density="compact" label="Town" persistentPlaceholder/>
                                 </v-col>
-<!--                                <v-col cols="12" md="6" class="block">-->
-<!--                                    <v-autocomplete v-model="selectedState" :items="states" prependInnerIcon="mdi-city" item-title="name"-->
-<!--                                                    variant="outlined"-->
-<!--                                                    density="compact" label="State" returnObject/>-->
-<!--                                </v-col>-->
-<!--                                <v-col cols="12" md="6" class="block">-->
-<!--                                    <v-autocomplete :items="regions" item-title="name"-->
-<!--                                                    prependInnerIcon="mdi-office-building" variant="outlined"-->
-<!--                                                    density="compact" label="Region" returnObject/>-->
-<!--                                </v-col>-->
-                                <v-col cols="12" md="12" class="block">
-                                    <v-text-field prependInnerIcon="mdi-map-marker-outline" variant="outlined" density="compact" label="Post Code"/>
+                                <v-col cols="12" md="12" class="py-0">
+                                    <v-text-field prependInnerIcon="mdi-map-marker-outline" variant="outlined" density="compact" label="Post Code" persistentPlaceholder/>
                                 </v-col>
-                                <v-col cols="12" md="12" class="block mt-2">
-                                    <v-text-field prependInnerIcon="mdi-account" variant="outlined" density="compact" label="Contact Name"/>
+                                <v-col cols="12" md="12" class="py-0">
+                                    <v-text-field prependInnerIcon="mdi-account" variant="outlined" density="compact" label="Contact Name" persistentPlaceholder/>
                                 </v-col>
-                                <v-col cols="12" md="12" class="block mt-2">
-                                    <v-text-field prependInnerIcon="mdi-phone" variant="outlined" density="compact" label="Telephone"/>
+                                <v-col cols="12" md="6" class="py-0">
+                                    <v-text-field prependInnerIcon="mdi-phone" variant="outlined" density="compact" label="Telephone" persistentPlaceholder/>
                                 </v-col>
-                                <v-col cols="12" md="12" class="block mt-2">
-                                    <v-text-field prependInnerIcon="mdi-email" variant="outlined" density="compact" label="Consignee Email"/>
+                                <v-col cols="12" md="6" class="py-0">
+                                    <v-text-field prependInnerIcon="mdi-email" variant="outlined" density="compact" label="Consignee Email" persistentPlaceholder/>
                                 </v-col>
                             </v-row>
-                        </div>
                     </v-card-text>
                 </v-card>
             </v-col>
-            <v-col cols="12" md="8">
+            <v-col cols="12" md="12">
                 <div class="d-flex flex-column ga-3">
-                    <!-- Step 2: Package Info -->
                     <v-card class="rounded-md shadow-sm">
-                        <v-card-title>
-                            Package Information
-                        </v-card-title>
+                        <v-card-title>Package Information</v-card-title>
                         <v-card-text>
-                            <v-row>
-                                <v-col cols="12" md="3">
-                                    <div class="block">
-                                        <span class="text-sm font-medium text-slate-700">Package Type</span>
-                                        <v-select class="mt-2" v-model="shipment.ptype" variant="outlined" density="compact" :items="ptypes" placeholder="Select Type" />
+                            <v-row dense v-for="(box, index) in boxes" :key="index" >
+                                <v-col cols="12" sm="6" md="6" lg="2" class="py-0">
+                                    <v-select v-model="box.ptype" variant="outlined" density="compact"
+                                              :items="ptypes" label="Package Type" persistentPlaceholder />
+                                </v-col>
+                                <v-col cols="12" sm="6" md="6" lg="2" class="py-0">
+                                    <v-number-input controlVariant="stacked" :precision="3" :min="0.5"
+                                                    v-model="box.actualWeight" variant="outlined" density="compact"
+                                                    label="Weight (kg)"
+                                                    persistentPlaceholder placeholder="0.00" />
+                                </v-col>
+                                <v-col cols="12" sm="8" md="8" lg="6" class="py-0">
+                                    <div class="d-flex ga-2">
+                                        <v-number-input controlVariant="stacked" :min="10" v-model="box.length" variant="outlined" density="compact" label="L (cm)" persistent-placeholder/>
+                                        <v-number-input controlVariant="stacked" :min="5" v-model="box.width" variant="outlined" density="compact" label="W (cm)" persistent-placeholder/>
+                                        <v-number-input controlVariant="stacked" :min="1" v-model="box.height" variant="outlined" density="compact" label="H (cm)" persistent-placeholder/>
                                     </div>
                                 </v-col>
-                                <v-col cols="12" md="3">
-                                    <div class="block">
-                                        <span class="text-sm font-medium text-slate-700">Weight (Kg)</span>
-                                        <v-number-input controlVariant="split" :precision="3" :min="0.5" class="mt-2" v-model="shipment.actualWeight" variant="outlined" density="compact" label="Weight (kg)" persistent-placeholder placeholder="0.00"/>
-                                    </div>
-                                </v-col>
-                                <v-col cols="12" md="6">
-                                    <div class="block">
-                                        <span class="text-sm font-medium text-slate-700">Dimensions (L x W x H)cm</span>
-                                        <div class="d-flex ga-2 mt-2">
-                                            <v-number-input controlVariant="stacked" :min="10" v-model="shipment.length" variant="outlined" density="compact" label="L" persistent-placeholder/>
-                                            <v-number-input controlVariant="stacked" :min="5" v-model="shipment.width" variant="outlined" density="compact" label="W" persistent-placeholder/>
-                                            <v-number-input controlVariant="stacked" :min="1" v-model="shipment.height" variant="outlined" density="compact" label="H" persistent-placeholder/>
-                                        </div>
-                                    </div>
-                                    Volumetric Weight {{volumeWeight.toFixed(3)}} Kg
+                                <v-col cols="12" sm="4" md="4" lg="2" class="py-0 d-flex ga-1">
+                                    <v-text-field :value="getChargeable(box).toFixed(3) + ' Kg'"
+                                                  variant="outlined" readonly density="compact" label="Volumetric Weight" persistentPlaceholder/>
+                                    <v-icon color="red" @click="removeBox(index)" title="Remove">mdi-package-variant-closed-minus</v-icon>
                                 </v-col>
                             </v-row>
+                            <v-btn color="success" size="small" @click="addBox" appendIcon="mdi-package-variant-closed-plus"
+                                   class="ms-auto">Add another box</v-btn>
+                            <div class="mt-3">
+                                <strong>Total Chargeable Weight for {{boxes?.length}} Box{{boxes?.length > 1 ? 'es' : ''}}:</strong>
+                                {{ totalWeight.toFixed(3) }} Kg
+                            </div>
+                            <div>
+                                <strong>Total Standard Price @ £{{ratePerKg}} per Kg:</strong>
+                                £{{ totalPrice.toFixed(2) }}
+                            </div>
+<!--                            <div>Chargeable Weight = MAX(actual weight, volumetric weight)</div>-->
                         </v-card-text>
                     </v-card>
-                    <!-- Step 3: Service Selection -->
                     <v-card class="rounded-md shadow-sm">
-                        <v-card-title>
-                            Shipping Service
-                        </v-card-title>
+                        <v-card-title>Shipping Service</v-card-title>
                         <v-card-text class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <v-row>
-                                <v-col cols="12" md="4">
-                                    <!-- Standard -->
-                                    <v-card class="position-relative  rounded-md">
+                            <v-row dense>
+                                <v-col cols="12" sm="4" md="4">
+                                    <v-card class="position-relative  rounded-md" :class="selectedService === 'standard' ? 'border-md border-success' : ''">
                                         <v-card-text>
                                             <div class="d-flex justify-space-between">
-                                                <input checked="" class="text-primary focus:ring-primary" name="service" type="radio">
+                                                <input class="text-primary focus:ring-primary" name="service"
+                                                       type="radio" value="standard" v-model="selectedService">
                                                 <v-icon class="material-symbols-outlined text-primary mb-2">mdi-clock-fast</v-icon>
                                             </div>
                                             <h4 class="font-weight-bold">Standard</h4>
                                             <p class="text-body-2 mb-2">5-7 Business Days</p>
-                                            <p class="font-weight-bold text-body-1 text-primary">£{{standardPrice.toFixed(2)}}</p>
+                                            <p class="font-weight-bold text-body-1 text-primary">£{{ totalPrice.toFixed(2) }}</p>
                                         </v-card-text>
                                     </v-card>
                                 </v-col>
-                                <v-col cols="12" md="4">
-                                    <!-- Express -->
-                                    <v-card class="position-relative  rounded-md">
+                                <v-col cols="12" sm="4" md="4">
+                                    <v-card class="position-relative  rounded-md" :class="selectedService === 'express' ? 'border-md border-success' : ''">
                                         <v-card-text>
                                             <div class="d-flex justify-space-between">
-                                                <input checked="" class="text-primary focus:ring-primary" name="service" type="radio">
+                                                <input class="text-primary focus:ring-primary" name="service"
+                                                       type="radio" value="express" v-model="selectedService">
                                                 <v-icon class="material-symbols-outlined text-primary mb-2">mdi-lightning-bolt</v-icon>
                                             </div>
                                             <h4 class="font-weight-bold">Express</h4>
                                             <p class="text-body-2 mb-2">2-3 Business Days</p>
-                                            <p class="font-weight-bold text-body-1 text-primary">£{{expressPrice.toFixed(2)}}</p>
+                                            <p class="font-weight-bold text-body-1 text-primary">£{{(3*totalPrice).toFixed(2)}}</p>
                                         </v-card-text>
                                     </v-card>
                                 </v-col>
-                                <v-col cols="12" md="4">
-                                    <!-- Overnight -->
-                                    <v-card class="position-relative  rounded-md">
+                                <v-col cols="12" sm="4" md="4">
+                                    <v-card class="position-relative  rounded-md" :class="selectedService === 'overnight' ? 'border-md border-success' : ''">
                                         <v-card-text>
                                             <div class="d-flex justify-space-between">
-                                                <input checked="" class="text-primary focus:ring-primary" name="service" type="radio">
+                                                <input class="text-primary focus:ring-primary" name="service"
+                                                       type="radio" value="overnight" v-model="selectedService">
                                                 <v-icon class="material-symbols-outlined text-primary mb-2">mdi-rocket-launch</v-icon>
                                             </div>
                                             <h4 class="font-weight-bold">Overnight</h4>
                                             <p class="text-body-2 mb-2">Next Day Delivery</p>
-                                            <p class="font-weight-bold text-body-1 text-primary">£{{overnightPrice.toFixed(2)}}</p>
+                                            <p class="font-weight-bold text-body-1 text-primary">£{{(6*totalPrice).toFixed(2)}}</p>
                                         </v-card-text>
                                     </v-card>
                                 </v-col>
                             </v-row>
                         </v-card-text>
                     </v-card>
-                    <v-card-actions class="justify-end">
+                    <v-card-actions class="justify-center">
                         <v-btn variant="outlined" color="secondary">Save Draft</v-btn>
-                        <v-btn variant="elevated" color="primary">Review Shipment</v-btn>
+                        <v-btn variant="elevated" color="primary" @click="saveShipment">Review Shipment</v-btn>
                     </v-card-actions>
 
                 </div>
             </v-col>
-            <v-col cols="12" md="4">
+            <v-col cols="12" md="6" lg="4">
                 <aside class="d-flex flex-column ga-3">
                     <v-card class="rounded-md overflow-hidden">
                         <v-card-title>Shipment Summary</v-card-title>
@@ -230,10 +217,14 @@
                             </div>
                             <div class="pt-3 border-t border-slate-100  d-flex justify-space-between">
                                 <span class="font-bold">Total Estimate</span>
-                                <span class="font-bold text-xl text-primary">£{{ totalPrice.toFixed(2) }}</span>
+                                <span class="font-bold text-xl text-primary">£{{ finalPrice.toFixed(2) }}</span>
                             </div>
                         </v-card-text>
                     </v-card>
+                </aside>
+            </v-col>
+            <v-col cols="12" sm="6" md="6" lg="4">
+                <aside class="d-flex flex-column ga-3">
                     <v-card>
                         <v-card-text class="bg-primary/5 dark:bg-primary/10 rounded-lg">
                             <div class="d-flex items-start ga-3 mb-3">
@@ -248,7 +239,10 @@
                             </v-btn>
                         </v-card-text>
                     </v-card>
-                    <!-- Need Help Card -->
+                </aside>
+            </v-col>
+            <v-col cols="12" sm="6" md="12" lg="4">
+                <aside class="d-flex flex-column ga-3">
                     <v-card class="bg-primary rounded-md">
                         <v-card-title>
                             Need assistance?
@@ -260,6 +254,7 @@
                     </v-card>
                 </aside>
             </v-col>
+
         </v-row>
     </v-container>
 </template>
@@ -269,9 +264,11 @@ import { Country, State, City } from 'country-state-city';
 export default {
     name: "ShipmentNew",
     mounted() {
-
     },
     computed:{
+        company(){
+            return this.$store.state.company;
+        },
         countries(){
             return Country.getAllCountries();
         },
@@ -281,17 +278,26 @@ export default {
         regions(){
             return City.getCitiesOfState(this.selectedState.countryCode,this.selectedState.isoCode)
         },
-        volumeWeight(){
-            return (this.shipment.length * this.shipment.width * this.shipment.height)/5000
+        totalWeight() {
+            return this.boxes.reduce((sum, box) => {
+                return sum + this.getChargeable(box);
+            }, 0);
+        },
+        totalPrice() {
+            return this.totalWeight * this.ratePerKg;
+        },
+        servicePrice() {
+            switch (this.selectedService) {
+                case 'express':
+                    return this.totalPrice * 3;
+                case 'overnight':
+                    return this.totalPrice * 6;
+                default:
+                    return this.totalPrice;
+            }
         },
         standardPrice(){
-            return (4+this.pricePerKg*this.volumeWeight)
-        },
-        expressPrice(){
-            return (3*this.standardPrice)
-        },
-        overnightPrice(){
-            return (6*this.standardPrice)
+            return this.servicePrice;
         },
         fuelCharge(){
             return (1+this.standardPrice/10)
@@ -299,12 +305,24 @@ export default {
         ukTax(){
             return ((this.standardPrice)+(this.fuelCharge))*20/100
         },
-        totalPrice(){
-            return (this.standardPrice + this.fuelCharge + this.ukTax)
+        finalPrice(){
+            return (this.servicePrice+this.fuelCharge+this.ukTax)
         }
     },
     data(){
         return{
+            boxes: [
+                {
+                    ptype: 'Standard Box',
+                    actualWeight: 1,
+                    length: 35,
+                    width: 25,
+                    height: 6,
+                }
+            ],
+            ptypes:['Standard Box','Envelope','Pallet','Custom Package'],
+            ratePerKg: 5,
+            selectedService: 'standard',
             selectedCountry:{ "name": "United Kingdom", "isoCode": "GB", "flag": "🇬🇧", "phonecode": "44", "currency": "GBP", "latitude": "54.00000000", "longitude": "-2.00000000", "timezones": [ { "zoneName": "Europe/London", "gmtOffset": 0, "gmtOffsetName": "UTC±00", "abbreviation": "GMT", "tzName": "Greenwich Mean Time" } ] },
             selectedState: { "name": "London Borough of Ealing", "isoCode": "EAL", "countryCode": "GB", "latitude": "51.52503660", "longitude": "-0.34139650" },
             searchQuery :'',
@@ -325,8 +343,8 @@ export default {
                 phone:'',
                 whatsapp:'',
             },
-            ptypes:['Standard Box','Envelope','Pallet','Custom Package'],
-            pricePerKg:4,
+
+            pricePerKg:5,
             shipment:{
                 ptype:'Standard Box',
                 actualWeight:1,
@@ -337,56 +355,47 @@ export default {
         }
     },
     methods:{
-        async onSearchChange(val) {
-            this.searchQuery = val;
-            if (val && val.length > 3) {
-                await this.getPredictions(val);
-            } else {
-                this.predictions = [];
-            }
-            console.log(Country.getAllCountries());
-            this.countries = Country.getAllCountries();
+        addBox() {
+            this.boxes.push({
+                ptype: 'Standard Box',
+                actualWeight: 0,
+                length: 35,
+                width: 25,
+                height:6,
+            });
+        },
 
+        removeBox(index) {
+            this.boxes.splice(index, 1);
         },
-        async getPredictions(input) {
-            try {
-                this.loading = true;
-                const resp = await axios.get(`/google/autocomplete?query=${encodeURIComponent(input)}`);
-                this.predictions = resp.data.predictions || [];
-            } catch (err) {
-                console.error("Prediction error:", err);
-            } finally {
-                this.loading = false;
-            }
-        },
-        async onPlaceSelect(place) {
-            if (place && place.place_id) {
-                await this.getPlaceDetails(place.place_id);
-            }
-        },
-        async getPlaceDetails(placeId) {
-            try {
-                const resp = await axios.get(`/google/details?place_id=${placeId}`);
-                const details = resp.data.result;
 
-                console.log("Full address details:", details);
+        getVolumetric(box) {
+            if (!box.length || !box.width || !box.height) return 0;
 
-                // Auto-fill your fields:
-                this.business.address_line1 = this.extractComponent(details, "street_number")+ ' ' + this.extractComponent(details, "route") ;
-                this.business.address_line2 = this.extractComponent(details, "sublocality") || this.extractComponent(details, "locality") + ' ' + this.extractComponent(details, "postal_town");
-                this.business.region = this.extractComponent(details, "administrative_area_level_2") || this.extractComponent(details, "postal_town");
-                this.business.postcode = this.extractComponent(details, "postal_code");
-                this.business.country = this.extractComponent(details, "country");
+            // standard courier formula
+            return (box.length * box.width * box.height) / 5000;
+        },
+        getChargeable(box) {
+            const volumetric = this.getVolumetric(box);
+            const actual = box.actualWeight || 0;
 
-                console.log("Auto-filled business:", this.business);
-            } catch (err) {
-                console.error("Place details error:", err);
-            }
+            return Math.max(actual, volumetric);
         },
-        extractComponent(details, type) {
-            const comp = details.address_components?.find((c) => c.types.includes(type));
-            return comp ? comp.long_name : "";
-        },
+        saveShipment() {
+            const payload = {
+                country: this.selectedCountry,
+                boxes: this.boxes,
+                total_weight: this.totalWeight,
+                base_price: this.totalPrice,
+                service: this.selectedService,
+                final_price: this.servicePrice
+            };
+
+            console.log("payload",payload);
+
+            // send to Laravel
+            // axios.post('/api/shipment', payload)
+        }
     }
 }
 </script>
