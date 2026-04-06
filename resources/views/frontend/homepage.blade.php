@@ -144,8 +144,8 @@
                     </div>
                 @endforeach
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-4 mt-6">
-                <div class="flex flex-col gap-3">
+            <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-6 mt-6 py-12">
+                <div class="flex flex-col gap-6">
                     <h2 class="text-xl lg:text-4xl">International Economy delivery</h2>
                     <p>
                         Heavier, bulky items are perfect to send via our Economy service. This International Parcel delivery solution is a cost-effective, door-to-door service. Choose your delivery day to over 200 countries and book your order online with a City Courier account.
@@ -156,11 +156,11 @@
                     <img src="{{asset('images/international1.png')}}" class="rounded-lg shadow" alt="International Delivery"/>
                 </div>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-4 mt-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-6 mt-6 py-12">
                 <div>
                     <img src="{{asset('images/international2.png')}}" class="rounded-lg shadow" alt="International Delivery"/>
                 </div>
-                <div class="flex flex-col gap-3">
+                <div class="flex flex-col gap-6">
                     <h2 class="text-xl lg:text-4xl">International Express delivery</h2>
                     <p>
                         Express is the fastest way to send a parcel internationally. We can provide optional first flight out and delivery by 9:00, 10:00 and 12:00 the same or next working day to major cities worldwide – plus Next Day delivery to Europe and the US. The service also offers tailored customs clearance and document support, so we can support you every step of the way.
