@@ -20,17 +20,11 @@
                 ],
         ];
     @endphp
-    <section class="relative aspect-video lg:aspect-7/3 bg-orange-900">
-{{--        <video autoplay loop muted playsinline class="absolute w-full z-2 h-full object-cover object-bottom inset-0 opacity-50" poster="{{asset('images/dhl.jpg')}}">--}}
-{{--            <source src="{{asset('images/dhl.mp4')}}"/>--}}
-{{--        </video>--}}
-        <video autoplay loop muted playsinline class="absolute w-full h-full object-cover object-bottom inset-0 opacity-50"
+    <section class="relative aspect-video lg:aspect-7/3 bg-primary">
+        <video autoplay loop muted playsinline class="absolute w-full h-full object-cover object-center inset-0 opacity-70"
                poster="{{asset('images/plane1.png')}}">
-            <source src="{{asset('images/fedex.mp4')}}"/>
+            <source src="{{asset('images/video3.mp4')}}"/>
         </video>
-{{--        <video autoplay loop muted playsinline class="absolute w-1/2 h-full z-1 object-cover object-center inset-0 opacity-90" poster="{{asset('images/fedex.jpg')}}">--}}
-{{--            <source src="{{asset('images/video3.mp4')}}"/>--}}
-{{--        </video>--}}
         <div class="container max-w-7xl h-full flex items-center justify-end text-center">
             <h1 class="text-white drop-shadow-lg drop-shadow-gray-800 text-[6vw]">
                 Worldwide <br/> <span class="text-primary">Courier</span> <br/> & Cargo
@@ -87,13 +81,13 @@
                     <p class="text-sm tracking-wide">Our Courier partners connects people in over 220 countries and territories worldwide. Driven by the power of more than 380,000 employees, we deliver integrated services and tailored solutions for managing and transporting letters, goods and information. </p>
                     <div class="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 gap-3">
                         <div class="text-center">
-                            <img class="aspect-video object-cover rounded-t-xl" src="{{asset('images/fedex.png')}}" alt="Fedex">
+                            <img class="object-cover rounded-t-xl" src="{{asset('images/fedex.png')}}" alt="Fedex">
                         </div>
                         <div class="text-center">
-                            <img class="aspect-video object-cover rounded-t-xl" src="{{asset('images/ups.png')}}" alt="UPS">
+                            <img class="object-cover rounded-t-xl" src="{{asset('images/ups.png')}}" alt="UPS">
                         </div>
                         <div class="text-center">
-                            <img class="aspect-video object-cover rounded-t-xl" src="{{asset('images/dhl.png')}}" alt="DHL">
+                            <img class="object-cover rounded-t-xl" src="{{asset('images/dhl.png')}}" alt="DHL">
                         </div>
                     </div>
                     <div class="bg-primary leading-relaxed rounded-ss-xl rounded-ee-xl text-center px-4 text-white text-xl text-shadow-xs text-shadow-gray-400 tracking-wider">
