@@ -1,6 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
+    @php
+        $whys = [
+                 [
+                    "title" => "Global Reach.",
+                    "icon" => "mdi-earth",
+                    "text" => "We're connected all over the world, so no matter your parcel's destination, CitySprint ensures your items are delivered with ease."
+                 ],
+                [
+                    "title" => "Carefully selected partners.",
+                    "icon" => "mdi-handshake",
+                    "text" => "Providing a positive service is key, so we ensure our partner's performance and values align with our own to offer you trusted International shipping from the UK."
+                ],
+                [
+                    "title" => "Flexible solutions.",
+                    "icon" => "mdi-file-document-check-outline",
+                    "text" => "Whether it's an urgent delivery or a non-time sensitive shipment, we've got you covered."
+                ],
+        ];
+    @endphp
     <section class="relative aspect-video lg:aspect-7/3 bg-orange-900">
 {{--        <video autoplay loop muted playsinline class="absolute w-full z-2 h-full object-cover object-bottom inset-0 opacity-50" poster="{{asset('images/dhl.jpg')}}">--}}
 {{--            <source src="{{asset('images/dhl.mp4')}}"/>--}}
@@ -97,6 +116,56 @@
                 </div>
                 <div class="col-span-12 dimage lg:col-span-5">
                     <img src="{{asset('images/serv2.png')}}" alt="Courier Services">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-20 bg-primary">
+        <div class="container max-w-7xl">
+            <div class="flex flex-col items-center text-center mb-16 space-y-4">
+                <h2 class="text-white font-bold tracking-widest uppercase text-sm">International Delivery</h2>
+                <h3 class="text-4xl md:text-5xl font-black tracking-tight">Why choose City Courier for International delivery?</h3>
+                <div class="w-20 h-1.5 bg-primary rounded-full"></div>
+                <p>
+                    Courier City is a well-established British brand with a global reach, and is a trusted name in
+                    deliveries. Our International courier service connects regional Courier City UK service centres with
+                    high performance partners across the map, enabling us to offer an exceptional International parcel
+                    service that is fast, reliable and flexible. Our express International shipping ensures your items
+                    get to their destination on time and as expected. You can stay up to date with its progress by using
+                    our full tracking services and electronic proof of delivery so you can have peace of mind.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                @foreach($whys as $why)
+                    <div class="hover:shadow text-white p-2 lg:p-4 rounded-xl overflow-hidden hover:-translate-y-1 transition-all">
+                        <i class="iconify text-9xl" data-icon="{{$why['icon']}}"></i>
+                        <h3 class="text-3xl">{{$why['title']}}</h3>
+                        <p class="text-sm lg:text-base">{{$why['text']}}</p>
+                    </div>
+                @endforeach
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-4 mt-6">
+                <div class="flex flex-col gap-3">
+                    <h2 class="text-xl lg:text-4xl">International Economy delivery</h2>
+                    <p>
+                        Heavier, bulky items are perfect to send via our Economy service. This International Parcel delivery solution is a cost-effective, door-to-door service. Choose your delivery day to over 200 countries and book your order online with a City Courier account.
+                    </p>
+                    <a href="{{route('login')}}" class="px-4 py-1.5 rounded-lg text-xl shadow text-center max-w-75 border-2 border-white text-white hover:text-secondary text-shadow-xs text-shadow-gray-400">Create an Account</a>
+                </div>
+                <div>
+                    <img src="{{asset('images/international1.png')}}" class="rounded-lg shadow" alt="International Delivery"/>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-4 mt-6">
+                <div>
+                    <img src="{{asset('images/international2.png')}}" class="rounded-lg shadow" alt="International Delivery"/>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <h2 class="text-xl lg:text-4xl">International Express delivery</h2>
+                    <p>
+                        Express is the fastest way to send a parcel internationally. We can provide optional first flight out and delivery by 9:00, 10:00 and 12:00 the same or next working day to major cities worldwide – plus Next Day delivery to Europe and the US. The service also offers tailored customs clearance and document support, so we can support you every step of the way.
+                    </p>
+                    <a href="{{route('login')}}" class="px-4 py-1.5 rounded-lg text-xl shadow text-center max-w-75 border-2 border-white text-white hover:text-secondary text-shadow-xs text-shadow-gray-400">Create an Account</a>
                 </div>
             </div>
         </div>
