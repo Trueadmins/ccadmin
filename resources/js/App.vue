@@ -1,7 +1,8 @@
 <template>
     <v-app>
         <v-navigation-drawer v-model="drawer"
-                             :temporary="!isDesktop"
+                             permanent
+
                              :location="$vuetify.display.mobile ? 'left' : undefined">
             <v-list nav activeClass="bg-primary" density="compact" class="d-flex flex-column h-screen">
                 <v-list-item baseColor="dark" >
