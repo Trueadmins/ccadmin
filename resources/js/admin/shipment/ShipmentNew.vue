@@ -6,6 +6,7 @@
         <v-row dense>
             <v-col cols="12" md="12" class="py-0">
                 <v-autocomplete v-model="selectedCountry" :items="countries" item-title="name"
+                                item-value="isoCode"
                                 prependInnerIcon="mdi-map-marker" variant="outlined" hide-details
                                 density="compact" label="Destination Country" clearable/>
             </v-col>
@@ -269,14 +270,24 @@ export default {
         company(){
             return this.$store.state.company;
         },
-        countries(){
-            return Country.getAllCountries();
+        ratePerKg() {
+            const isoCode = this.selectedCountry;
+            const rates = {
+                IN: 7,
+                US: 10,
+                GB: 5,
+                DE: 8
+            };
+            return rates[isoCode] || 5;
         },
-        states(){
-            return State.getStatesOfCountry(this.selectedCountry.isoCode)
+        countries() {
+            const allowed = ['US', 'IN', 'DE', 'GB','FR'];
+            return Country.getAllCountries().filter(c =>
+                allowed.includes(c.isoCode)
+            );
         },
-        regions(){
-            return City.getCitiesOfState(this.selectedState.countryCode,this.selectedState.isoCode)
+        cities(){
+            return City.getCitiesOfCountry(this.selectedCountry)
         },
         totalWeight() {
             return this.boxes.reduce((sum, box) => {
@@ -321,15 +332,9 @@ export default {
                 }
             ],
             ptypes:['Standard Box','Envelope','Pallet','Custom Package'],
-            ratePerKg: 5,
             selectedService: 'standard',
-            selectedCountry:{ "name": "United Kingdom", "isoCode": "GB", "flag": "🇬🇧", "phonecode": "44", "currency": "GBP", "latitude": "54.00000000", "longitude": "-2.00000000", "timezones": [ { "zoneName": "Europe/London", "gmtOffset": 0, "gmtOffsetName": "UTC±00", "abbreviation": "GMT", "tzName": "Greenwich Mean Time" } ] },
-            selectedState: { "name": "London Borough of Ealing", "isoCode": "EAL", "countryCode": "GB", "latitude": "51.52503660", "longitude": "-0.34139650" },
-            searchQuery :'',
-            selectedPlace:null,
+            selectedCountry:'IN',
             loading:false,
-            predictions:[],
-            place_id: '',
             business:{
                 business_name:'',
                 address_line1:'',
@@ -343,15 +348,6 @@ export default {
                 phone:'',
                 whatsapp:'',
             },
-
-            pricePerKg:5,
-            shipment:{
-                ptype:'Standard Box',
-                actualWeight:1,
-                length:35,
-                width:25,
-                height:6,
-            }
         }
     },
     methods:{
@@ -388,13 +384,11 @@ export default {
                 total_weight: this.totalWeight,
                 base_price: this.totalPrice,
                 service: this.selectedService,
-                final_price: this.servicePrice
+                final_price: this.servicePrice,
+                afterTax:this.finalPrice
             };
 
             console.log("payload",payload);
-
-            // send to Laravel
-            // axios.post('/api/shipment', payload)
         }
     }
 }
