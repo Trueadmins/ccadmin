@@ -5,7 +5,8 @@
 {{--        <video autoplay loop muted playsinline class="absolute w-full z-2 h-full object-cover object-bottom inset-0 opacity-50" poster="{{asset('images/dhl.jpg')}}">--}}
 {{--            <source src="{{asset('images/dhl.mp4')}}"/>--}}
 {{--        </video>--}}
-        <video autoplay loop muted playsinline class="absolute w-full h-full object-cover object-bottom inset-0 opacity-50" poster="{{asset('images/fedex.jpg')}}">
+        <video autoplay loop muted playsinline class="absolute w-full h-full object-cover object-bottom inset-0 opacity-50"
+               poster="{{asset('images/plane1.png')}}">
             <source src="{{asset('images/fedex.mp4')}}"/>
         </video>
 {{--        <video autoplay loop muted playsinline class="absolute w-1/2 h-full z-1 object-cover object-center inset-0 opacity-90" poster="{{asset('images/fedex.jpg')}}">--}}
@@ -65,7 +66,17 @@
                     </div>
                     <p class="text-sm tracking-wide">When you ship with Our Courier Services – you’re shipping with specialists in international shipping and delivery services! With our wide range of express parcel and package services, along with shipping and tracking solutions to fit your needs – DHL, UPS, FedEx and other reputated companies can deliver! </p>
                     <p class="text-sm tracking-wide">Our Courier partners connects people in over 220 countries and territories worldwide. Driven by the power of more than 380,000 employees, we deliver integrated services and tailored solutions for managing and transporting letters, goods and information. </p>
-
+                    <div class="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                        <div class="text-center">
+                            <img class="aspect-video object-cover rounded-t-xl" src="{{asset('images/fedex.png')}}" alt="Fedex">
+                        </div>
+                        <div class="text-center">
+                            <img class="aspect-video object-cover rounded-t-xl" src="{{asset('images/ups.png')}}" alt="UPS">
+                        </div>
+                        <div class="text-center">
+                            <img class="aspect-video object-cover rounded-t-xl" src="{{asset('images/dhl.png')}}" alt="DHL">
+                        </div>
+                    </div>
                     <div class="bg-primary leading-relaxed rounded-ss-xl rounded-ee-xl text-center px-4 text-white text-xl text-shadow-xs text-shadow-gray-400 tracking-wider">
                         Guaranteed Delivery to India with in 5-15 working days
                     </div>

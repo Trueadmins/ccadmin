@@ -218,7 +218,7 @@
                             </div>
                             <div class="flex items-center gap-1">
                                 <i data-icon="mdi-email" class="iconify text-primary"></i>
-                                    <span class="text-sm">couriercityukl@gmail.com</span>
+                                    <span class="text-sm">couriercityuk@gmail.com</span>
                             </div>
                             </li>
                         </ul>
