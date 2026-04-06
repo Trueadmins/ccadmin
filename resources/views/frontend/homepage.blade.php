@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="relative aspect-7/3 bg-orange-900">
+    <section class="relative aspect-video lg:aspect-7/3 bg-orange-900">
 {{--        <video autoplay loop muted playsinline class="absolute w-full z-2 h-full object-cover object-bottom inset-0 opacity-50" poster="{{asset('images/dhl.jpg')}}">--}}
 {{--            <source src="{{asset('images/dhl.mp4')}}"/>--}}
 {{--        </video>--}}
@@ -69,7 +69,7 @@
                     <div class="bg-primary leading-relaxed rounded-ss-xl rounded-ee-xl text-center px-4 text-white text-xl text-shadow-xs text-shadow-gray-400 tracking-wider">
                         Guaranteed Delivery to India with in 5-15 working days
                     </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
+                    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3">
                         <div class="text-center shadow-xl overflow-hidden rounded-xl">
                             <img class="aspect-video object-cover rounded-t-xl" src="{{asset('images/air-f.jpg')}}" alt="Air Freight">
                             <div class="bg-primary rounded-b-xl text-white text-shadow-xs text-shadow-gray-400 tracking-wide">Air Freight</div>
@@ -90,7 +90,7 @@
             </div>
         </div>
     </section>
-    <section class="py-24 px-4 bg-gray-50">
+    <section class="py-24 px-4 bg-linear-to-br from-orange-200 via-white/50 to-primary/50">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col items-center text-center mb-16 space-y-4">
                 <h2 class="text-primary font-bold tracking-widest uppercase text-sm">Our Expertise</h2>
