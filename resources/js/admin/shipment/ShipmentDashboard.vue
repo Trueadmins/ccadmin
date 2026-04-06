@@ -6,7 +6,8 @@
                 <p>Track your logistics and active cargo in real time</p>
             </v-col>
             <v-col cols="12" md="4">
-                <v-btn color="success" variant="elevated" size="small" prependIcon="mdi-plus">Create New Shipment</v-btn>
+                <v-btn color="success" variant="elevated" size="small" prependIcon="mdi-plus"
+                       link :to="{name:'ShipmentNew'}">Create New Shipment</v-btn>
             </v-col>
         </v-row>
         <v-row>

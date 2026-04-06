@@ -4,58 +4,117 @@
             <h2 class="font-bold">Create New Shipment</h2>
         </div>
         <!-- Multistep Layout -->
-        <v-row>
+        <v-row dense>
+            <v-col cols="12" md="12">
+                <v-autocomplete v-model="selectedCountry" :items="countries" item-title="name"
+                                prependInnerIcon="mdi-map-marker" variant="outlined"
+                                density="compact" label="Destination Country" clearable/>
+            </v-col>
+            <v-col cols="12" md="6">
+                <v-card class="rounded-md shadow-sm">
+                    <v-card-title>
+                       Pick up Address
+                    </v-card-title>
+                    <v-card-text>
+                        <div class="space-y-4">
+                            <v-row dense>
+                                <v-col cols="12" md="12" class="block mt-2">
+                                    <v-text-field prependInnerIcon="mdi-briefcase-account-outline" variant="outlined" density="compact" label="Consignor"/>
+                                </v-col>
+                                <v-col cols="12" md="12" class="block">
+                                    <v-text-field variant="outlined" density="compact" label="Address line 1"/>
+                                </v-col>
+                                <v-col cols="12" md="12" class="block">
+                                    <v-text-field variant="outlined" density="compact" label="Address line 2"/>
+                                </v-col>
+                                <v-col cols="12" md="12" class="block">
+                                    <v-text-field variant="outlined" density="compact" label="Address line 3"/>
+                                </v-col>
+                                <v-col cols="12" md="12" class="block">
+                                    <v-text-field variant="outlined" density="compact" label="Town"/>
+                                </v-col>
+                                <v-col cols="12" md="12" class="block">
+                                    <v-autocomplete v-model="selectedCountry" :items="countries" item-title="name"
+                                                    prependInnerIcon="mdi-map-marker" variant="outlined"
+                                                    density="compact" label="Country" returnObject clearable/>
+                                </v-col>
+<!--                                <v-col cols="12" md="6" class="block">-->
+<!--                                    <v-autocomplete v-model="selectedState" :items="states" prependInnerIcon="mdi-city" item-title="name"-->
+<!--                                                    variant="outlined"-->
+<!--                                                    density="compact" label="State" returnObject/>-->
+<!--                                </v-col>-->
+<!--                                <v-col cols="12" md="6" class="block">-->
+<!--                                    <v-autocomplete :items="regions" item-title="name"-->
+<!--                                                    prependInnerIcon="mdi-office-building" variant="outlined"-->
+<!--                                                    density="compact" label="Region" returnObject/>-->
+<!--                                </v-col>-->
+                                <v-col cols="12" md="12" class="block">
+                                    <v-text-field prependInnerIcon="mdi-map-marker-outline" variant="outlined" density="compact" label="Post Code"/>
+                                </v-col>
+
+                                <v-col cols="12" md="12" class="block mt-2">
+                                    <v-text-field prependInnerIcon="mdi-account" variant="outlined" density="compact" label="Contact Name"/>
+                                </v-col>
+                            </v-row>
+                        </div>
+                    </v-card-text>
+                </v-card>
+            </v-col>
+            <v-col cols="12" md="6">
+                <v-card class="rounded-md shadow-sm">
+                    <v-card-title>
+                       Delivery Address
+                    </v-card-title>
+                    <v-card-text>
+                        <div class="space-y-4">
+                            <v-row dense>
+                                <v-col cols="12" md="12" class="block mt-2">
+                                    <v-text-field prependInnerIcon="mdi-briefcase-account-outline" variant="outlined" density="compact" label="Consignee"/>
+                                </v-col>
+                                <v-col cols="12" md="12" class="block">
+                                    <v-text-field variant="outlined" density="compact" label="Address line 1"/>
+                                </v-col>
+                                <v-col cols="12" md="12" class="block">
+                                    <v-text-field variant="outlined" density="compact" label="Address line 2"/>
+                                </v-col>
+                                <v-col cols="12" md="12" class="block">
+                                    <v-text-field variant="outlined" density="compact" label="Address line 3"/>
+                                </v-col>
+                                <v-col cols="12" md="12" class="block">
+                                    <v-text-field variant="outlined" density="compact" label="Town"/>
+<!--                                    <v-autocomplete v-model="selectedState" :items="states" prependInnerIcon="mdi-city" item-title="name"-->
+<!--                                                    variant="outlined"-->
+<!--                                                    density="compact" label="Town" returnObject/>-->
+                                </v-col>
+<!--                                <v-col cols="12" md="6" class="block">-->
+<!--                                    <v-autocomplete v-model="selectedState" :items="states" prependInnerIcon="mdi-city" item-title="name"-->
+<!--                                                    variant="outlined"-->
+<!--                                                    density="compact" label="State" returnObject/>-->
+<!--                                </v-col>-->
+<!--                                <v-col cols="12" md="6" class="block">-->
+<!--                                    <v-autocomplete :items="regions" item-title="name"-->
+<!--                                                    prependInnerIcon="mdi-office-building" variant="outlined"-->
+<!--                                                    density="compact" label="Region" returnObject/>-->
+<!--                                </v-col>-->
+                                <v-col cols="12" md="12" class="block">
+                                    <v-text-field prependInnerIcon="mdi-map-marker-outline" variant="outlined" density="compact" label="Post Code"/>
+                                </v-col>
+                                <v-col cols="12" md="12" class="block mt-2">
+                                    <v-text-field prependInnerIcon="mdi-account" variant="outlined" density="compact" label="Contact Name"/>
+                                </v-col>
+                                <v-col cols="12" md="12" class="block mt-2">
+                                    <v-text-field prependInnerIcon="mdi-phone" variant="outlined" density="compact" label="Telephone"/>
+                                </v-col>
+                                <v-col cols="12" md="12" class="block mt-2">
+                                    <v-text-field prependInnerIcon="mdi-email" variant="outlined" density="compact" label="Consignee Email"/>
+                                </v-col>
+                            </v-row>
+                        </div>
+                    </v-card-text>
+                </v-card>
+            </v-col>
             <v-col cols="12" md="8">
                 <div class="d-flex flex-column ga-3">
-                    <!-- Step 1: Origin & Destination -->
-                    <v-card class="rounded-md shadow-sm">
-                        <v-card-title>
-                            Origin &amp; Destination
-                        </v-card-title>
-                        <v-card-text>
-                            <div class="space-y-4">
-                                <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500">From (Origin)</h3>
-                                <label class="block">
-                                    <v-text-field variant="outlined" density="compact" label="Full Name"/>
-                                </label>
-                                <label class="block">
-                                    <v-text-field variant="outlined" density="compact" label="Address / Zip Code"/>
-                                </label>
-                            </div>
-                            <div class="space-y-4">
-                                <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500">To (Destination)</h3>
-                                <v-row dense>
-                                    <v-col cols="12" md="12" class="block mt-2">
-                                        <v-text-field prependInnerIcon="mdi-account" variant="outlined" density="compact" label="Recipient Name"/>
-                                    </v-col>
-                                    <v-col cols="12" md="6" class="block">
-                                        <v-autocomplete v-model="selectedCountry" :items="countries" item-title="name"
-                                                        prependInnerIcon="mdi-map-marker" variant="outlined"
-                                                        density="compact" label="Country" returnObject/>
-                                    </v-col>
-                                    <v-col cols="12" md="6" class="block">
-                                        <v-autocomplete v-model="selectedState" :items="states" prependInnerIcon="mdi-city" item-title="name"
-                                                        variant="outlined"
-                                                        density="compact" label="State" returnObject/>
-                                    </v-col>
-                                    <v-col cols="12" md="6" class="block">
-                                        <v-autocomplete :items="regions" item-title="name"
-                                                        prependInnerIcon="mdi-office-building" variant="outlined"
-                                                        density="compact" label="Region" returnObject/>
-                                    </v-col>
-                                    <v-col cols="12" md="6" class="block">
-                                        <v-text-field prependInnerIcon="mdi-map-marker-outline" variant="outlined" density="compact" label="Post Code"/>
-                                    </v-col>
-                                    <v-col cols="12" md="12" class="block">
-                                        <v-text-field variant="outlined" density="compact" label="Address line 1"/>
-                                    </v-col>
-                                    <v-col cols="12" md="12" class="block">
-                                        <v-text-field variant="outlined" density="compact" label="Address line 2"/>
-                                    </v-col>
-                                </v-row>
-                            </div>
-                        </v-card-text>
-                    </v-card>
                     <!-- Step 2: Package Info -->
                     <v-card class="rounded-md shadow-sm">
                         <v-card-title>
