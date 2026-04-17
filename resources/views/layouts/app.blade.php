@@ -176,7 +176,7 @@
                         </div>
                     </div>
                     <div>
-                        <h5 class="font-bold text-primary uppercase tracking-wider text-base">Southall</h5>
+                        <h5 class="font-bold text-primary uppercase tracking-wider text-base">Southall Comms</h5>
                         <h5 class="font-bold text-gray-200 mb-6 uppercase tracking-wider text-xs">Opp Fire Station</h5>
                         <ul class="space-y-4 text-sm text-slate-300">
                             <li class="flex flex-col gap-1">
@@ -200,7 +200,7 @@
                         </ul>
                     </div>
                     <div>
-                        <h5 class="font-bold text-primary uppercase tracking-wider text-base">Southall</h5>
+                        <h5 class="font-bold text-primary uppercase tracking-wider text-base">Didar Tech</h5>
                         <h5 class="font-bold text-gray-200 mb-6 uppercase tracking-wider text-xs">Near Railway Station</h5>
                         <ul class="space-y-4 text-sm text-slate-300">
                             <li class="flex flex-col gap-1">
