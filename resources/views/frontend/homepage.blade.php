@@ -6,7 +6,7 @@
                  [
                     "title" => "Global Reach.",
                     "icon" => "mdi-earth",
-                    "text" => "We're connected all over the world, so no matter your parcel's destination, CitySprint ensures your items are delivered with ease."
+                    "text" => "We're connected all over the world, so no matter your parcel's destination, Courier City ensures your items are delivered with ease."
                  ],
                 [
                     "title" => "Carefully selected partners.",
@@ -77,7 +77,7 @@
                         <h3 class="text-xl lg:text-2xl font-light text-white text-shadow-xs text-shadow-gray-400">Express Delivery Services and International Shipping</h3>
                         <div class="text-sm text-secondary">Fast. Door-to-Door. Courier Delivered.</div>
                     </div>
-                    <p class="text-sm tracking-wide">When you ship with Our Courier Services – you’re shipping with specialists in international shipping and delivery services! With our wide range of express parcel and package services, along with shipping and tracking solutions to fit your needs – DHL, UPS, FedEx and other reputated companies can deliver! </p>
+                    <p class="text-sm tracking-wide">When you ship with Our Courier Services – you’re shipping with specialists in international shipping and delivery services! With our wide range of express parcel and package services, along with shipping and tracking solutions to fit your needs – DHL, UPS, FedEx and other reputed companies can deliver! </p>
                     <p class="text-sm tracking-wide">Our Courier partners connects people in over 220 countries and territories worldwide. Driven by the power of more than 380,000 employees, we deliver integrated services and tailored solutions for managing and transporting letters, goods and information. </p>
                     <div class="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 gap-3">
                         <div class="text-center">
@@ -118,7 +118,7 @@
         <div class="container max-w-7xl">
             <div class="flex flex-col items-center text-center mb-16 space-y-4">
                 <h2 class="text-white font-bold tracking-widest uppercase text-sm">International Delivery</h2>
-                <h3 class="text-4xl md:text-5xl font-black tracking-tight">Why choose City Courier for International delivery?</h3>
+                <h3 class="text-4xl md:text-5xl font-black tracking-tight">Why choose Courier City for International delivery?</h3>
                 <div class="w-20 h-1.5 bg-primary rounded-full"></div>
                 <p>
                     Courier City is a well-established British brand with a global reach, and is a trusted name in
@@ -142,7 +142,7 @@
                 <div class="flex flex-col gap-6">
                     <h2 class="text-xl lg:text-4xl">International Economy delivery</h2>
                     <p>
-                        Heavier, bulky items are perfect to send via our Economy service. This International Parcel delivery solution is a cost-effective, door-to-door service. Choose your delivery day to over 200 countries and book your order online with a City Courier account.
+                        Heavier, bulky items are perfect to send via our Economy service. This International Parcel delivery solution is a cost-effective, door-to-door service. Choose your delivery day to over 200 countries and book your order online with a Courier City account.
                     </p>
                     <a href="{{route('login')}}" class="px-4 py-1.5 rounded-lg text-xl shadow text-center max-w-75 border-2 border-white text-white hover:text-secondary text-shadow-xs text-shadow-gray-400">Create an Account</a>
                 </div>
@@ -157,7 +157,7 @@
                 <div class="flex flex-col gap-6">
                     <h2 class="text-xl lg:text-4xl">International Express delivery</h2>
                     <p>
-                        Express is the fastest way to send a parcel internationally. We can provide optional first flight out and delivery by 9:00, 10:00 and 12:00 the same or next working day to major cities worldwide – plus Next Day delivery to Europe and the US. The service also offers tailored customs clearance and document support, so we can support you every step of the way.
+                        Express is the fastest way to send a parcel internationally. We can provide optional first flight out and delivery by same or next working day to major cities worldwide – plus Next Day delivery to Europe and the US. The service also offers tailored customs clearance and document support, so we can support you every step of the way.
                     </p>
                     <a href="{{route('login')}}" class="px-4 py-1.5 rounded-lg text-xl shadow text-center max-w-75 border-2 border-white text-white hover:text-secondary text-shadow-xs text-shadow-gray-400">Create an Account</a>
                 </div>
