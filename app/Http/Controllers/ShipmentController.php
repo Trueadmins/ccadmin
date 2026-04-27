@@ -53,6 +53,7 @@ class ShipmentController extends Controller
                 $results[] = [
                     'service_id'=>$service->id,
                     'service_name'=>$service->service_name,
+                    'courier_name' => $service->companyCourier->courier->name ?? '',
                     'price'=>$rate->rate
                 ];
             }
