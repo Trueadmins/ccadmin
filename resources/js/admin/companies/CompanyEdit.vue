@@ -199,14 +199,6 @@ export default {
         id:[Number,String]
     },
     computed:{
-        companies(){
-            return this.$store.state.companies;
-        },
-        companyFromStore(){
-            return this.companies.find(
-                c => c.id === Number(this.id)
-            );
-        },
         companyCouriers(){
             return this.$store.state.companyCouriers;
         },
@@ -221,6 +213,7 @@ export default {
         this.editedItem = {...this.companyFromStore};
         await this.$store.dispatch('fetchCompanyCouriers',Number(this.id));
         await this.$store.dispatch('fetchActiveCountries');
+        await this.getCompanies();
     },
     watch:{
         companyFromStore:{
@@ -234,6 +227,8 @@ export default {
     },
     data(){
         return{
+            companies:[],
+            companyFromStore:{},
             companyRefForm:false,
             companyEditForm:false,
             editedItem:{
@@ -284,6 +279,12 @@ export default {
         }
     },
     methods:{
+        async getCompanies(){
+            await this.$store.dispatch('fetchCompanies');
+            this.companies = this.$store.state.companies;
+            this.companyFromStore = this.companies.find(c => c.id === Number(this.id));
+            this.editCompany = {...this.companyFromStore};
+        },
         editCompany(){
             const uheaders = {headers: {'Content-Type': 'multipart/form-data'}}
             const adata  = {
