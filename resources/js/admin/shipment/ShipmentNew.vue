@@ -4,11 +4,35 @@
             <h2 class="font-bold">Create New Shipment</h2>
         </div>
         <v-row dense>
+            <v-col cols="12" md="12">
+                <v-card>
+                    <v-card-text>
+                        <v-select variant="outlined" density="compact"
+                                  v-model="form.country_id"
+                                  :items="countries"
+                                  item-title="name"
+                                  item-value="id"
+                                  label="Country"
+                        />
+
+                        <v-number-input v-model="form.weight" label="Weight" variant="outlined" density="compact" />
+                        <v-btn @click="calculateRates">Check Rates</v-btn>
+                    </v-card-text>
+                </v-card>
+            </v-col>
             <v-col cols="12" md="12" class="py-0">
                 <v-autocomplete v-model="selectedCountry" :items="countries" item-title="name"
-                                item-value="isoCode"
+                                item-value="iso_code"
                                 prependInnerIcon="mdi-map-marker" variant="outlined" hide-details
-                                density="compact" label="Destination Country" clearable/>
+                                density="compact" label="Destination Country" clearable>
+                    <template v-slot:item="{ props, item }">
+                        <v-list-item v-bind="props" :title="item.raw.name">
+                            <template #prepend>
+                                <span class="mr-2">{{ item.raw.flag }}</span>
+                            </template>
+                        </v-list-item>
+                    </template>
+                </v-autocomplete>
             </v-col>
             <v-col cols="12" md="6">
                 <v-card class="rounded-md shadow-sm">
@@ -133,7 +157,7 @@
                                 {{ totalWeight.toFixed(3) }} Kg
                             </div>
                             <div>
-                                <strong>Total Standard Price @ £{{ratePerKg}} per Kg:</strong>
+                                <strong>Total <span class="text-capitalize">{{selectedService}}</span> Price @ £{{ratePerKg}} per Kg:</strong>
                                 £{{ totalPrice.toFixed(2) }}
                             </div>
 <!--                            <div>Chargeable Weight = MAX(actual weight, volumetric weight)</div>-->
@@ -141,7 +165,7 @@
                     </v-card>
                     <v-card class="rounded-md shadow-sm">
                         <v-card-title>Shipping Service</v-card-title>
-                        <v-card-text class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <v-card-text>
                             <v-row dense>
                                 <v-col cols="12" sm="4" md="4">
                                     <v-card class="position-relative  rounded-md" :class="selectedService === 'standard' ? 'border-md border-success' : ''">
@@ -152,8 +176,7 @@
                                                 <v-icon class="material-symbols-outlined text-primary mb-2">mdi-clock-fast</v-icon>
                                             </div>
                                             <h4 class="font-weight-bold">Standard</h4>
-                                            <p class="text-body-2 mb-2">5-7 Business Days</p>
-                                            <p class="font-weight-bold text-body-1 text-primary">£{{ totalPrice.toFixed(2) }}</p>
+                                            <p class="text-body-2">5-7 Business Days</p>
                                         </v-card-text>
                                     </v-card>
                                 </v-col>
@@ -166,8 +189,7 @@
                                                 <v-icon class="material-symbols-outlined text-primary mb-2">mdi-lightning-bolt</v-icon>
                                             </div>
                                             <h4 class="font-weight-bold">Express</h4>
-                                            <p class="text-body-2 mb-2">2-3 Business Days</p>
-                                            <p class="font-weight-bold text-body-1 text-primary">£{{(3*totalPrice).toFixed(2)}}</p>
+                                            <p class="text-body-2">2-3 Business Days</p>
                                         </v-card-text>
                                     </v-card>
                                 </v-col>
@@ -180,8 +202,7 @@
                                                 <v-icon class="material-symbols-outlined text-primary mb-2">mdi-rocket-launch</v-icon>
                                             </div>
                                             <h4 class="font-weight-bold">Overnight</h4>
-                                            <p class="text-body-2 mb-2">Next Day Delivery</p>
-                                            <p class="font-weight-bold text-body-1 text-primary">£{{(6*totalPrice).toFixed(2)}}</p>
+                                            <p class="text-body-2">Next Day Delivery</p>
                                         </v-card-text>
                                     </v-card>
                                 </v-col>
@@ -201,7 +222,7 @@
                         <v-card-title>Shipment Summary</v-card-title>
                         <v-card-text class="d-flex flex-column ga-3">
                             <div class="d-flex justify-space-between text-sm">
-                                <span class="text-slate-500">Base Shipping</span>
+                                <span class="text-slate-500 text-capitalize">{{selectedService}} Shipping</span>
                                 <span class="font-medium">£{{ standardPrice.toFixed(2) }}</span>
                             </div>
                             <div class="d-flex justify-space-between text-sm">
@@ -264,48 +285,36 @@ import axios from "axios";
 import { Country, State, City } from 'country-state-city';
 export default {
     name: "ShipmentNew",
-    mounted() {
+    async mounted() {
+        await this.fetchCountries();
+        await this.fetchServices();
+    },
+    watch: {
+        boxes: {
+            handler() {
+                this.calculatePrice();
+            },
+            deep: true
+        },
+        selectedCountry() {
+            this.calculatePrice();
+        },
+        selectedService() {
+            this.calculatePrice();
+        }
     },
     computed:{
         company(){
             return this.$store.state.company;
         },
-        ratePerKg() {
-            const isoCode = this.selectedCountry;
-            const rates = {
-                IN: 7,
-                US: 10,
-                GB: 5,
-                DE: 8
-            };
-            return rates[isoCode] || 5;
-        },
-        countries() {
-            const allowed = ['US', 'IN', 'DE', 'GB','FR'];
-            return Country.getAllCountries().filter(c =>
-                allowed.includes(c.isoCode)
-            );
-        },
-        cities(){
-            return City.getCitiesOfCountry(this.selectedCountry)
-        },
         totalWeight() {
-            return this.boxes.reduce((sum, box) => {
-                return sum + this.getChargeable(box);
-            }, 0);
+            return this.totalWeightApi;
         },
         totalPrice() {
-            return this.totalWeight * this.ratePerKg;
+            return this.totalPriceApi;
         },
         servicePrice() {
-            switch (this.selectedService) {
-                case 'express':
-                    return this.totalPrice * 3;
-                case 'overnight':
-                    return this.totalPrice * 6;
-                default:
-                    return this.totalPrice;
-            }
+            return this.totalPriceApi;
         },
         standardPrice(){
             return this.servicePrice;
@@ -322,6 +331,17 @@ export default {
     },
     data(){
         return{
+            countries:[],
+            services:[],
+            selectedService:null,
+            form:{
+                country_id:null,
+                parcel_type:'parcel',
+                weight:0,
+            },
+            ratePerKg: 0,
+            totalWeightApi: 0,
+            totalPriceApi: 0,
             boxes: [
                 {
                     ptype: 'Standard Box',
@@ -332,7 +352,6 @@ export default {
                 }
             ],
             ptypes:['Standard Box','Envelope','Pallet','Custom Package'],
-            selectedService: 'standard',
             selectedCountry:'IN',
             loading:false,
             business:{
@@ -351,6 +370,50 @@ export default {
         }
     },
     methods:{
+        async fetchCountries() {
+            await this.$store.dispatch('fetchActiveCountries');
+            this.countries = this.$store.state.activeCountries;
+        },
+        async fetchServices(){
+            const res = await axios.get('/admin/company/services');
+            this.services = res.data.services;
+        },
+        async calculateRates(){
+            const res = await axios.post('/admin/company/calculate-rates', this.form);
+            this.services = res.data;
+        },
+        async calculatePrice() {
+            if (!this.selectedCountry || !this.boxes.length) return;
+
+            try {
+                const res = await axios.post('/shipment/calculate', {
+                    destination_country: this.selectedCountry,
+                    service: this.selectedService,
+                    boxes: this.boxes.map(b => ({
+                        actual_weight: b.actualWeight,
+                        length: b.length,
+                        width: b.width,
+                        height: b.height,
+                        quantity: 1
+                    }))
+                });
+
+                this.totalWeightApi = res.data.total_weight;
+                this.ratePerKg = res.data.rate_per_kg;
+                this.totalPriceApi = res.data.total_price;
+                const finalData = {
+                    ...res.data, // ← real backend values
+                    boxes: this.boxes,
+                    destination_country: this.selectedCountry,
+                    service: this.selectedService
+                };
+
+                console.log('FINAL DATA', finalData);
+
+            } catch (e) {
+                console.error(e);
+            }
+        },
         addBox() {
             this.boxes.push({
                 ptype: 'Standard Box',
@@ -360,11 +423,9 @@ export default {
                 height:6,
             });
         },
-
         removeBox(index) {
             this.boxes.splice(index, 1);
         },
-
         getVolumetric(box) {
             if (!box.length || !box.width || !box.height) return 0;
 
@@ -379,11 +440,17 @@ export default {
         },
         saveShipment() {
             const payload = {
-                country: this.selectedCountry,
-                boxes: this.boxes,
+                destination_country: this.selectedCountry,
+                service: this.selectedService,
+                boxes: this.boxes.map(b => ({
+                    actual_weight: b.actualWeight,
+                    length: b.length,
+                    width: b.width,
+                    height: b.height,
+                    quantity: 1
+                })),
                 total_weight: this.totalWeight,
                 base_price: this.totalPrice,
-                service: this.selectedService,
                 final_price: this.servicePrice,
                 afterTax:this.finalPrice
             };

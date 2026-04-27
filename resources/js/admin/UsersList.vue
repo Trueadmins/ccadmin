@@ -1,6 +1,6 @@
 <template>
     <v-container fluid>
-        <v-row align="center" density="compact">
+        <v-row dense align="center" density="compact">
             <v-col cols="12" md="8">
                 <h2>All Users</h2>
                 <p>Track your users and active users in real time</p>
@@ -44,6 +44,23 @@
                                   type="email" persistentPlaceholder placeholder="Email Address"/>
                     <v-text-field v-model="defaultItem.password" prependInnerIcon="mdi-lock" label="Password" variant="outlined" density="compact"
                                   type="password" persistentPlaceholder appendInnerIcon="mdi-eye"/>
+                    <v-select
+                        v-model="defaultItem.status"
+                        :items="['active','inactive']"
+                        label="Status"
+                        density="compact"
+                        variant="outlined"
+                    />
+                    <v-select
+                        v-if="isSuperadmin"
+                        v-model="defaultItem.company_id"
+                        :items="companies"
+                        item-title="name"
+                        item-value="id"
+                        label="Company"
+                        density="compact"
+                        variant="outlined"
+                    />
                     <div class="d-flex ga-2 justify-center">
                         <v-btn @click="addNewUser" color="primary" variant="elevated" density="comfortable">Submit</v-btn>
                         <v-btn @click="addUserDialog = false" color="primary" variant="outlined" density="comfortable">Cancel</v-btn>
@@ -73,7 +90,6 @@
     </v-container>
 </template>
 <script>
-import axios from "axios";
 import dayjs from "dayjs";
 
 export default {
@@ -81,11 +97,19 @@ export default {
     computed: {
         dayjs() {
             return dayjs
+        },
+        users(){
+            return this.$store.state.users;
+        },
+        companies(){
+            return this.$store.state.companies;
+        },
+        isSuperadmin(){
+            return this.$store.getters.isSuperadmin;
         }
     },
     data(){
         return{
-            users:[],
             userHeaders:[
                 {title:'ID',key:'id',width:25},
                 {title:'Name',key:'name',width:150},
@@ -102,48 +126,50 @@ export default {
                 name:"",
                 email:"",
                 password:"",
+                company_id:null,
+                status:"active",
             },
             editedItem:{
                 name:"",
                 email:"",
                 password:"",
+                company_id:null,
+                status:"active",
             },
             addUserDialog:false,
             editUserDialog:false,
         }
     },
     mounted() {
-        this.getAllUsers();
+        this.$store.dispatch('fetchUsers');
+        this.$store.dispatch('fetchCompanies');
     },
     methods:{
-        getAllUsers(){
-            axios.get('/admin/users')
-                .then((resp)=>{
-                    this.users = resp.data.users;
-                })
-        },
         editItem(item){
-            this.editedIndex = this.users.indexOf({item});
+            this.editedIndex = this.users.indexOf(item);
             this.editedItem =Object.assign({},item);
             this.editUserDialog = true;
         },
         addNewUser(){
-            const nuser = {
-                name:this.defaultItem.name,
-                email:this.defaultItem.email,
-                password:this.defaultItem.password,
-            }
-            this.addUserDialog = false;
-            console.log('nuser',nuser)
+            const payload = {...this.defaultItem};
+            this.$store.dispatch('createUser', payload)
+                .then(()=>{
+                    this.addUserDialog = false;
+                    this.defaultItem = {
+                        name:"",
+                        email:"",
+                        password:"",
+                        status:"active",
+                        company_id:null
+                    };
+                });
         },
         editUser(){
-            const euser = {
-                name:this.editedItem.name,
-                email:this.editedItem.email,
-                password:this.editedItem.password,
-            }
-            this.editUserDialog = false;
-            console.log('euser',euser)
+            const payload = {...this.editedItem};
+            this.$store.dispatch('updateUser', payload)
+                .then(()=>{
+                    this.editUserDialog = false;
+                });
         }
     }
 }

@@ -10,11 +10,20 @@ import App from "@/App.vue";
 import vuetify from "./vuetify.js";
 import router from "./router/index.js";
 import store from "./store/index.js";
+import Toast, {useToast} from "vue-toastification";
+import "vue-toastification/dist/index.css";
+const options = {
+    position: 'bottom-right',
+    timeout: 1000,
+    closeOnClick: true,
+    pauseOnHover: true,
+};
 
 const app = createApp(App);
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+
+// import ExampleComponent from './components/ExampleComponent.vue';
+// app.component('example-component', ExampleComponent);
 
 /**
  * The following block of code may be used to automatically register your
@@ -33,7 +42,9 @@ app.component('example-component', ExampleComponent);
  * an "id" attribute of "app". This element is included with the "auth"
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
-
+app.use(Toast, options);
+app.config.globalProperties.$toast = useToast();
+window.Toast = useToast();
 app.use(vuetify);
 app.use(router);
 app.use(store);
