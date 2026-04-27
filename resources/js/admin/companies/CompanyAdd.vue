@@ -8,7 +8,7 @@
                 <h2>Add Company</h2>
             </v-col>
             <v-col cols="4" md="4">
-                <v-btn link :to="{name:'CompanyList'}" color="success" size="small" prependIcon="mdi-plus">Reset</v-btn>
+                <v-btn link :to="{name:'CompanyList'}" color="success" size="small" prependIcon="mdi-chevron-left">Back</v-btn>
             </v-col>
         </v-row>
         <v-form ref="companyRefForm" v-model="companyAddForm" @submit.prevent="addCompany">
@@ -34,23 +34,7 @@
                                                   persistentPlaceholder placeholder="Phone No"/>
                                 </v-col>
                                 <v-col cols="12" md="12">
-                                    <v-text-field v-model="defaultItem.website" variant="outlined" density="compact" label="website"
-                                                  persistentPlaceholder placeholder="https://example.com"/>
-                                </v-col>
-                                <v-col cols="12" md="12">
                                     <v-switch v-model="defaultItem.is_active" color="success" label="Active"/>
-                                </v-col>
-                            </v-row>
-                        </v-card-text>
-                    </v-card>
-                </v-col>
-                <v-col cols="12" md="4">
-                    <v-card>
-                        <v-card-item title="Company Logo (optional)" appendIcon="mdi-arrow-left"></v-card-item>
-                        <v-card-text>
-                            <v-row dense>
-                                <v-col cols="12" md="12">
-                                    <v-file-upload v-model="defaultItem.logo" title="Upload Logo" density="comfortable" clearable/>
                                 </v-col>
                             </v-row>
                         </v-card-text>
@@ -104,9 +88,7 @@ export default {
                 'name':this.defaultItem.name,
                 'email':this.defaultItem.email,
                 'phone':this.defaultItem.phone,
-                'website':this.defaultItem.website,
                 'is_active':this.defaultItem.is_active,
-                'logo':this.defaultItem.logo,
             }
             axios.post('/admin/company/add',adata,uheaders)
                 .then((resp)=>{
